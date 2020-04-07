@@ -1,7 +1,8 @@
 # BAZZINGA!
 The new quizz game
 
-https://media.giphy.com/media/TfEceTuCZkd1u/giphy.gif
+![quiz](https://media.giphy.com/media/TfEceTuCZkd1u/giphy.gif
+)
 
 ## What is Bazzinga?
 
