@@ -9,6 +9,7 @@ import { getUser } from './api/core.api';
 import { setUserAction } from './context/actions';
 import { Lobby } from './components/lobby/lobby';
 import { Game } from './components/game/game';
+import { Ranking } from './components/ranking/ranking';
 
 
 const Routes = () => {
@@ -19,6 +20,7 @@ const Routes = () => {
             <Route exact path={'/set'} render={() => <GameSettings/>}/>
             <Route exact path={'/lobby'} render={() => <Lobby/>}/>
             <Route exact path={'/game'} render={() => <Game/>}/>
+            <Route exact path={'/ranking'} render={() => <Ranking/>}/>
         </Switch>
     )
 };

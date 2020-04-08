@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './card.scss';
 import { useSpring, animated as a } from 'react-spring'
+import { Question } from '../question/question';
 
 export const Card = () => {
 	const [flipped, set] = useState(false);
@@ -14,7 +15,7 @@ export const Card = () => {
 			<a.div class="c back" style={{ opacity: opacity.interpolate(o => 1 - o), transform }}>
 				ICON CATEGORY
 			</a.div>
-			<a.div class="c front" style={{ opacity, transform: transform.interpolate(t => `${t} rotateY(180deg)`) }}>QUESTION?</a.div>
+			<a.div class="c front" style={{ opacity, transform: transform.interpolate(t => `${t} rotateY(180deg)`) }}><Question/></a.div>
 		</div>
 	)
 };
