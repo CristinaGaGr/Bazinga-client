@@ -75,7 +75,7 @@ const game = new Schema({
     users: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     owner: { type: Schema.Types.ObjectId, ref: 'User' },
     pinCode: Number,
-    Status: String,
+    status: String,
     gameStarted: Boolean,
     questions: [{ type: Schema.Types.ObjectId, ref: 'Question' }],
     actualQuestion: Number,
@@ -85,18 +85,17 @@ const game = new Schema({
 
 
 const User = new Schema({
-    Password: String,
-    Nick: { type: String, unique: true }
+    password: String,
+    username: { type: String, unique: true }
 });
 
 
 const responses = new Schema({
     user: { type: Schema.Types.ObjectId, ref: 'User' },
     question: { type: Schema.Types.ObjectId, ref: 'Question' },
-    ResponseTime: Number,
-    Answer: String,
+    responseTime: Number,
+    answer: String,
 });
 ````
-
 
 

@@ -1,0 +1,15 @@
+.back {
+  background-color: red;
+}
+
+.front {
+  background-color: blue;
+}
+
+.c {
+  position: absolute;
+  width: 98vw;
+  height: 98vh;
+  cursor: pointer;
+  will-change: transform, opacity;
+}
