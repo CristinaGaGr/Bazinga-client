@@ -1,4 +1,4 @@
-import { axiosInstance } from './api.constants';
+import { axiosInstance } from './api';
 
 
 export const getUser = () => {
