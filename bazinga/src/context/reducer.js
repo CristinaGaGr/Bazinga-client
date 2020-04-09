@@ -1,5 +1,6 @@
 export const initialState = {
 	user: undefined,
+	firstLoad: false
 };
 
 export const reducer = (state, action) => {
@@ -7,7 +8,8 @@ export const reducer = (state, action) => {
 		case 'USER_RESPONSE':
 			return {
 				...state,
-				user: action.payload
+				user: action.payload,
+				firstLoad: true
 			};
 		default:
 			return state;

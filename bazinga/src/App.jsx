@@ -10,17 +10,23 @@ import { setUserAction } from './context/actions';
 import { Lobby } from './components/lobby/lobby';
 import { Game } from './components/game/game';
 import { Ranking } from './components/ranking/ranking';
+import { SignUp } from './components/auth/signup';
+import { SignIn } from './components/auth/signin';
+import { History } from './components/history/history';
 
 
 const Routes = () => {
     return (
         <Switch>
             <Route exact path={'/'} render={() => <Dashboard/>}/>
-            <Route exact path={'/username'} render={() => <Username/>}/>
+            <Route exact path={'/username/:from'} render={() => <Username/>}/>
             <Route exact path={'/set'} render={() => <GameSettings/>}/>
             <Route exact path={'/lobby'} render={() => <Lobby/>}/>
             <Route exact path={'/game'} render={() => <Game/>}/>
             <Route exact path={'/ranking'} render={() => <Ranking/>}/>
+            <Route exact path={'/signup'} render={() => <SignUp/>}/>
+            <Route exact path={'/signin'} render={() => <SignIn/>}/>
+            <Route exact path={'/history'} render={() => <History/>}/>
         </Switch>
     )
 };
