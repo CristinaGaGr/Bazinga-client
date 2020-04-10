@@ -13,6 +13,8 @@ import { Ranking } from './components/ranking/ranking';
 import { SignUp } from './components/auth/signup';
 import { SignIn } from './components/auth/signin';
 import { History } from './components/history/history';
+import socketIOClient from 'socket.io-client';
+
 
 
 const Routes = () => {
@@ -36,7 +38,11 @@ export const App = () =>  {
     const [{user}, dispatch] = useStateValue();
 
     useEffect(() => {
-        getUser().then( (res) => dispatch(setUserAction(res)) )
+        getUser().then( (res) => dispatch(setUserAction(res)));
+
+
+        const socket = socketIOClient('http://localhost:4000');
+        socket.on('FromAPI', data => console.log(data));
     }, [dispatch]);
 
 

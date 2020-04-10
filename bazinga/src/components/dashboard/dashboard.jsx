@@ -2,6 +2,8 @@ import React from 'react';
 import './dashboard.scss';
 import { Link, useHistory } from 'react-router-dom';
 import { useStateValue } from '../../context/context';
+import { createGame } from '../../api/game.api';
+import { setGameAction } from '../../context/actions';
 
 
 export const Dashboard = () => {
@@ -11,7 +13,11 @@ export const Dashboard = () => {
 
 	const fromCreate = () => {
 		if (user) {
-			history.push('/set');
+			createGame(user).then((res) => {
+				const {pin, game_id} = res;
+				dispatch(setGameAction(pin, game_id));
+				history.push('/set');
+			});
 		} else {
 			history.push('/username/create');
 		}

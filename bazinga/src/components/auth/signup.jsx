@@ -13,6 +13,7 @@ export const SignUp = () => {
 	const { register, handleSubmit, errors } = useForm();
 	const onSubmit = data => {
 		const {username, email, password, repeatPassword} = data;
+		console.log(data);
 		signup(username, email, password, repeatPassword)
 			.then(() => {
 				dispatch(setUserAction(username));
@@ -23,10 +24,10 @@ export const SignUp = () => {
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
-			<input type="text" placeholder="Username" name="Username" ref={register({required: true})} />
-			<input type="email" placeholder="Email" name="Email" ref={register} />
-			<input type="text" placeholder="Password" name="Password" ref={register({required: true, min: 6})} />
-			<input type="text" placeholder="Repeat Password" name="Repeat Password" ref={register} />
+			<input type="text" placeholder="Username" name="username" ref={register({required: true})} />
+			<input type="email" placeholder="Email" name="email" ref={register} />
+			<input type="text" placeholder="Password" name="password" ref={register({required: true, min: 6})} />
+			<input type="text" placeholder="Repeat Password" name="repeatPassword" ref={register} />
 
 			<button type={'submit'}>Sign Up</button>
 		</form>

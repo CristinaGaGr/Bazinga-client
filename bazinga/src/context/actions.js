@@ -6,16 +6,9 @@ export const setUserAction = (user) => {
 	}
 };
 
-export const setLoadingAction = (isLoading) => {
+export const setGameAction = (pinCode, gameId) => {
 	return {
-		type: 'LOADING',
-		payload: isLoading
-	}
-};
-
-export const setChildToParentAction = (childToParent) => {
-	return {
-		type: 'MODIFY_PARENT',
-		payload: childToParent
+		type: 'SET_GAME',
+		payload: {pinCode, gameId}
 	}
 };

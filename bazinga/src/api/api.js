@@ -1,8 +1,10 @@
 import axios from 'axios';
+import socketIOClient from "socket.io-client";
 
+const baseUrl = 'http://localhost:4000';
 
 export const axiosInstance = axios.create({
-	baseURL: 'http://localhost:8081'
+	baseURL: baseUrl
 });
 
 axiosInstance.interceptors.response.use(response => {
@@ -10,3 +12,6 @@ axiosInstance.interceptors.response.use(response => {
 }, error => {
 	return Promise.reject(error);
 });
+
+
+
