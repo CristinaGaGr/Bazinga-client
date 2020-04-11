@@ -14,6 +14,7 @@ import { SignUp } from './components/auth/signup';
 import { SignIn } from './components/auth/signin';
 import { History } from './components/history/history';
 import socketIOClient from 'socket.io-client';
+import { socket } from './api/api';
 
 
 
@@ -41,7 +42,6 @@ export const App = () =>  {
         getUser().then( (res) => {
             dispatch(setUserAction(res));
         });
-        const socket = socketIOClient('http://localhost:4000');
         socket.on('FromAPI', data => console.log(data));
 
     }, [dispatch]);

@@ -13,5 +13,7 @@ axiosInstance.interceptors.response.use(response => {
 	return Promise.reject(error);
 });
 
+export const socket = socketIOClient('http://localhost:4000');
+
 
 

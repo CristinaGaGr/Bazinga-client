@@ -8,8 +8,7 @@ import { setGameAction } from '../../context/actions';
 
 export const Dashboard = () => {
 	const history = useHistory();
-	const [{user, firstLoad}, dispatch] = useStateValue();
-	console.log(firstLoad);
+	const [{user, firstLoad}] = useStateValue();
 
 	const fromCreate = () => {
 		if (user) {
