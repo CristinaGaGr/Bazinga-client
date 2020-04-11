@@ -12,3 +12,9 @@ export const setGameAction = (pinCode, gameId) => {
 		payload: {pinCode, gameId}
 	}
 };
+
+export const fromJoinAction = () => {
+	return {
+		type: 'FROM_JOIN'
+	}
+};

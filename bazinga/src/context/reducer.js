@@ -2,8 +2,11 @@ export const initialState = {
 	user: undefined,
 	firstLoad: false,
 	gameId: null,
-	pinCode: null
+	pinCode: null,
+	fromJoin: false
 };
+
+
 
 export const reducer = (state, action) => {
 	switch (action.type) {
@@ -18,6 +21,11 @@ export const reducer = (state, action) => {
 				...state,
 				gameId: action.payload.gameId,
 				pinCode: action.payload.pinCode
+			};
+		case 'FROM_JOIN':
+			return {
+				...state,
+				fromJoin: true
 			};
 		default:
 			return state;

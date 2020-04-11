@@ -1,14 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './lobby.scss';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useStateValue } from '../../context/context';
 import { socket } from '../../api/api';
 
 
 export const Lobby = () => {
 	const history = useHistory();
-	const [{pinCode, gameId}] = useStateValue();
+	const [{pinCode, gameId, user, fromJoin}] = useStateValue();
 	const [users, setUsers] = useState([]);
+
 
 	const pinCodeRef = useRef(null);
 
@@ -24,6 +25,9 @@ export const Lobby = () => {
 
 	useEffect(() => {
 		socket.join(gameId);
+		if (fromJoin) {
+			socket.to(gameId).emit('/hello', user);
+		}
 		socket.to(gameId).on('/user', (users) => {
 			setUsers(users);
 		});
@@ -42,12 +46,12 @@ export const Lobby = () => {
 				<button onClick={copy}>Copy</button>
 			</div>
 			<h2>Your friends:</h2>
-		<div>
-			{users.map((e) =>
-				<div key={e}>{e}</div>
-			)}
-		</div>
-			<button onClick={startGame}>Start Game!</button>
+			<div>
+				{users.map((e) =>
+					<div key={e}>{e}</div>
+				)}
+			</div>
+			{!fromJoin && <button onClick={startGame}>Start Game!</button>}
 		</div>
 	)
 };

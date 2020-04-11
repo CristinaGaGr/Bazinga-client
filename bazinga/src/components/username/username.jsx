@@ -3,7 +3,7 @@ import './username.scss';
 import { useHistory, useParams } from 'react-router-dom';
 import { useStateValue } from '../../context/context';
 import { createGame, joinGame } from '../../api/game.api';
-import { setGameAction } from '../../context/actions';
+import { fromJoinAction, setGameAction, setUserAction } from '../../context/actions';
 
 export const Username = () => {
 	const history = useHistory();
@@ -26,6 +26,8 @@ export const Username = () => {
 			}
 			joinGame(usernameToSend, pin).then((res) => {
 				dispatch(setGameAction(pin, res));
+				dispatch(setUserAction(usernameToSend));
+				dispatch(fromJoinAction());
 				history.push('/lobby');
 			});
 		}
