@@ -38,11 +38,12 @@ export const App = () =>  {
     const [{user}, dispatch] = useStateValue();
 
     useEffect(() => {
-        getUser().then( (res) => dispatch(setUserAction(res)));
-
-
+        getUser().then( (res) => {
+            dispatch(setUserAction(res));
+        });
         const socket = socketIOClient('http://localhost:4000');
         socket.on('FromAPI', data => console.log(data));
+
     }, [dispatch]);
 
 

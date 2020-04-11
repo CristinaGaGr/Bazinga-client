@@ -13,11 +13,7 @@ export const Dashboard = () => {
 
 	const fromCreate = () => {
 		if (user) {
-			createGame(user).then((res) => {
-				const {pin, game_id} = res;
-				dispatch(setGameAction(pin, game_id));
-				history.push('/set');
-			});
+			history.push('/set');
 		} else {
 			history.push('/username/create');
 		}

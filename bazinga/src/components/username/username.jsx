@@ -16,11 +16,7 @@ export const Username = () => {
 	const goToGame = (e) => {
 		e.preventDefault();
 		if (from === 'create') {
-			createGame(username).then((res) => {
-				const {pin, game_id} = res;
-				dispatch(setGameAction(pin, game_id));
-				history.push('/set');
-			});
+			history.push('/set');
 		} else {
 			let usernameToSend = '';
 			if (user) {
