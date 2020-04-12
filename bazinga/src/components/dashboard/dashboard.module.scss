@@ -1,0 +1,10 @@
+@import 'src/sass/variables/colors';
+@import 'src/sass/variables/sizes';
+
+.container {
+  text-align: center;
+
+  & > * {
+    margin-bottom: $s16px;
+  }
+}

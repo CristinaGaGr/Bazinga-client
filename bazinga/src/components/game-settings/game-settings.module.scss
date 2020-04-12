@@ -1,0 +1,84 @@
+@import 'src/sass/base';
+
+
+.slides {
+  position: absolute;
+  top: $s24px;
+  left: 50%;
+  transform: translate(0, -50%);
+}
+
+.container {
+
+  overflow: auto;
+
+  &:nth-child(2) {
+    flex: 1;
+  }
+
+  .title {
+    margin-bottom: $s16px;
+  }
+
+  .buttonsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30%;
+  }
+
+  .next {
+    position: absolute;
+    bottom: $s4px;
+    left: 0;
+    width: 100%;
+  }
+
+
+  .categoriesContainer {
+    margin-top: 190px;
+
+    & > * {
+      width: 100%;
+      margin-bottom: $s16px;
+
+      &:last-child {
+        margin-bottom: $s4px;
+      }
+    }
+
+    .category {
+      @extend .btn-category;
+      padding: 0 $s24px;
+
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+
+      &.all {
+        padding: $s20px $s24px;
+        span {
+          text-align: center;
+        }
+      }
+
+      & span {
+        flex: 1;
+        text-align: left;      }
+
+      &[data-selected='false'] {
+        box-shadow: 0 4px 0 0 rgba($button-category-shadow, 0.6);
+      }
+
+      .check {
+        background-color: $button-category-border;
+        border-radius: 50%;
+        padding: 2px;
+      }
+    }
+  }
+
+
+}

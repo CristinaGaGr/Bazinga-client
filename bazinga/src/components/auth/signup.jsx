@@ -10,7 +10,7 @@ import { useHistory } from 'react-router-dom';
 export const SignUp = () => {
 	const history = useHistory();
 	const [{}, dispatch] = useStateValue();
-	const { register, handleSubmit, errors } = useForm();
+	const { register, handleSubmit } = useForm();
 	const onSubmit = data => {
 		const {username, email, password, repeatPassword} = data;
 		console.log(data);

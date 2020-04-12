@@ -1,0 +1,87 @@
+@import './variables/fonts';
+@import './variables/colors';
+@import './variables/sizes';
+
+
+* {
+  margin: 0;
+  padding: 0;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: none;
+}
+
+body {
+  font-family: SF-PRO;
+
+  font-size: $s22px;
+  background: $background;
+  color: $color;
+  padding: $s24px;
+}
+
+a, a:active {
+  text-decoration: none;
+}
+
+
+.btn {
+  font-family: SF-PRO;
+  color: white;
+  background: $button-background;
+  border: 1px $button-background solid;
+  box-shadow: 0 4px 0 0 $button-shadow;
+  border-radius: 24px;
+
+  font-size: $s18px;
+  padding: $s12px $s24px;
+
+  transition: 0.2s all;
+  outline: none;
+
+  &:active {
+    outline: none;
+    transform: translateY(4px);
+    box-shadow: 0 0 0 0 $button-shadow;
+  }
+
+  & .disabled, &:disabled {
+    opacity: 0.6;
+  }
+}
+
+
+.btn-category {
+  @extend .btn;
+  color: $color-categories;
+  background: $button-category-background;
+  border: 1px $button-category-border solid;
+  box-shadow: 0 4px 0 0 $button-category-shadow;
+  &:active {
+    box-shadow: 0 0 0 0 $button-category-shadow;
+  }
+}
+
+.btn-next {
+  @extend .btn;
+  background: $button-next-background;
+  border: 1px $button-next-border solid;
+  box-shadow: 0 4px 0 0 $button-next-shadow;
+
+  &:active {
+    box-shadow: 0 0 0 0 $button-shadow;
+  }
+}
+
+
+.container {
+  position: relative;
+  height: calc(100vh - #{$s24px} * 2);
+  width: calc(100vw - #{$s24px} * 2);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

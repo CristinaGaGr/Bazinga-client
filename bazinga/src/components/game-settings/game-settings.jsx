@@ -1,21 +1,34 @@
-import React, { useState } from 'react';
-import './game-settings.scss';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import styles from './game-settings.module.scss';
+import { useHistory } from 'react-router-dom';
 import { createGame } from '../../api/game.api';
 import { useStateValue } from '../../context/context';
 import { setGameAction } from '../../context/actions';
+import { categoriesArray, difficultyArray, numberOfQuestionsArray } from '../../constants/setting.constants';
 
-const allCategories = [
-	'Entertainment: Books',
-	'Entertainment: Film',
-	'Entertainment: Music',
-	'Entertainment: Television',
-	'Entertainment: Video Games',
-	'Science & Nature',
-	'Geography',
-	'Sports',
-	'History'
-];
+
+const CategoryButton = ({value, label, imgSrc, chooseCategory, selectedCategories}) => {
+	const [isSelected, setIsSelected] = useState(selectedCategories.includes(value));
+
+	useEffect(() => {
+		setIsSelected(selectedCategories.includes(value));
+	});
+
+	return (
+		<>
+			<button className={`${styles.category} ${!imgSrc && styles.all}`}
+					onClick={() => chooseCategory(value)}
+					data-selected={isSelected}>
+				{imgSrc && <img src={imgSrc} alt={'category'}/>}
+				<span>{label}</span>
+				{isSelected && <img className={styles.check}
+									src={process.env.PUBLIC_URL + '/assets/images/check.png'}
+									alt={'check-img'}/>}
+			</button>
+		</>
+	)
+};
+
 
 export const GameSettings = () => {
 	const history = useHistory();
@@ -28,7 +41,7 @@ export const GameSettings = () => {
 
 	const chooseCategory = (category) => {
 		if (category === 'all') {
-			setCategories(allCategories);
+			setCategories(categoriesArray.map(e => e.value));
 		} else {
 			const existCategory = categories.find((e) => e === category);
 			if (existCategory) {
@@ -48,49 +61,69 @@ export const GameSettings = () => {
 		})
 	};
 
+	const nextScreen = () => {
+		setTimeout(() => {
+			setScreen(screen + 1);
+		}, 200);
+	};
+
 
 	return (
-		<div className={'setting-container'}>
-			{screen === 1 && <div className={'setting'}>
-				<h1 className={'titleSetting'}>How many questions do you want?</h1>
-				<button onClick={() => setNumberOfQuestions(10)}>10</button>
-				<button onClick={() => setNumberOfQuestions(20)}>20</button>
-				<button onClick={() => setNumberOfQuestions(30)}>30</button>
-				<button onClick={() => setNumberOfQuestions(40)}>40</button>
-				<button onClick={() => setNumberOfQuestions(50)}>50</button>
-				<button onClick={() => setScreen(2)}
+		<div className={`container ${styles.container}`}>
+			<div className={styles.slides}>{screen}/3</div>
+			{screen === 1 && <>
+				<div className={styles.title}>Number of questions?</div>
+				<div className={styles.buttonsContainer}>
+					{numberOfQuestionsArray.map(e =>
+						<button key={e}
+								className={'btn'}
+								onClick={() => setNumberOfQuestions(e)}>
+							{e}
+						</button>
+					)}
+				</div>
+				<button className={`btn-next ${styles.next}`}
+						onClick={nextScreen}
 						disabled={numberOfQuestions === 0}>
 					Next
 				</button>
-			</div>}
-			{screen === 2 && <div className={'setting'}>
-				<h1 className={'titleSetting'}>Choose the level:</h1>
-				<button onClick={() => setDifficulty('easy')}>Easy</button>
-				<button onClick={() => setDifficulty('medium')}>Medium</button>
-				<button onClick={() => setDifficulty('hard')}>Difficult</button>
-				<button onClick={() => setScreen(3)}
+			</>}
+			{screen === 2 && <>
+				<div className={styles.title}>Difficulty?</div>
+				<div className={styles.buttonsContainer}>
+					{difficultyArray.map(e =>
+						<button key={e.value}
+								className={'btn'}
+								onClick={() => setDifficulty(e.value)}>
+							{e.label}
+						</button>
+					)}
+				</div>
+				<button className={`btn-next ${styles.next}`}
+						onClick={nextScreen}
 						disabled={difficulty === ''}>
 					Next
 				</button>
-
-			</div>}
-			{screen === 3 && <div className={'setting'}>
-				<h1 className={'titleSetting'}>Choose categories:</h1>
-				<button onClick={() => chooseCategory('all')}>All</button>
-				<button onClick={() => chooseCategory('Entertainment: Books')}>Books</button>
-				<button onClick={() => chooseCategory('Entertainment: Film')}>Films</button>
-				<button onClick={() => chooseCategory('Entertainment: Music')}>Music</button>
-				<button onClick={() => chooseCategory('Entertainment: Television')}>TV</button>
-				<button onClick={() => chooseCategory('Entertainment: Video Games')}>Videogames</button>
-				<button onClick={() => chooseCategory('Science & Nature')}>Science & Nature</button>
-				<button onClick={() => chooseCategory('Geography')}>Geography</button>
-				<button onClick={() => chooseCategory('Sports')}>Sports</button>
-				<button onClick={() => chooseCategory('History')}>History</button>
-				<button onClick={goToLobby}
-				disabled={categories.length === 0}>
-					Next
-				</button>
-			</div>}
+			</>}
+			{screen === 3 && <>
+				<div className={styles.title}>Categories?</div>
+				<div className={styles.categoriesContainer}>
+					<CategoryButton label={'All'}
+									value={'all'}
+									selectedCategories={categories}
+									chooseCategory={chooseCategory}/>
+					{categoriesArray.map(e =>
+						<CategoryButton key={e.value}
+										{...e}
+										selectedCategories={categories}
+										chooseCategory={chooseCategory}/>
+					)}
+					<button className={`btn-next`} onClick={goToLobby}
+							disabled={categories.length === 0}>
+						Next
+					</button>
+				</div>
+			</>}
 		</div>
 	)
 };

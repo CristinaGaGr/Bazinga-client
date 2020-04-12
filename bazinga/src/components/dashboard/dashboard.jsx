@@ -1,5 +1,5 @@
 import React from 'react';
-import './dashboard.scss';
+import styles from  './dashboard.module.scss';
 import { Link, useHistory } from 'react-router-dom';
 import { useStateValue } from '../../context/context';
 import { createGame } from '../../api/game.api';
@@ -19,11 +19,10 @@ export const Dashboard = () => {
 	};
 
 	return (
-		<div>
-			<h1>BAZINGA!</h1>
-			<button onClick={fromCreate}>CREATE</button>
-			<Link to={'/username/join'}>JOIN</Link>
-
+		<div className={`container ${styles.container}`}>
+			{/*<h1>BAZINGA!</h1>*/}
+			<button className={'btn'} onClick={fromCreate}>CREATE</button>
+			<Link className={'btn'} to={'/username/join'}>JOIN</Link>
 			{(firstLoad) &&
 			<>
 				{(user) ?

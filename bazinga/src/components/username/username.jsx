@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './username.scss';
 import { useHistory, useParams } from 'react-router-dom';
 import { useStateValue } from '../../context/context';
-import { createGame, joinGame } from '../../api/game.api';
+import { joinGame } from '../../api/game.api';
 import { fromJoinAction, setGameAction, setUserAction } from '../../context/actions';
 
 export const Username = () => {

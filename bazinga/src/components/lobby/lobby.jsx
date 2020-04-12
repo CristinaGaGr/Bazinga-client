@@ -19,7 +19,7 @@ export const Lobby = () => {
 	};
 
 	const startGame = () => {
-		socket.emit('/start');
+		socket.emit('/start', gameId);
 		history.push('/game');
 	};
 
@@ -33,7 +33,7 @@ export const Lobby = () => {
 	return (
 		<div>
 			<div>
-				<h4>Coy and share:</h4>
+				<h4>Copy and share:</h4>
 				<input ref={pinCodeRef} type={'text'} value={pinCode} disabled={true}/>
 				<button onClick={copy}>Copy</button>
 			</div>
