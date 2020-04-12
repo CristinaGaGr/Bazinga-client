@@ -19,23 +19,15 @@ export const Lobby = () => {
 	};
 
 	const startGame = () => {
-		socket.to(gameId).emit('/start');
+		socket.emit('/start');
 		history.push('/game');
 	};
 
 	useEffect(() => {
-		socket.join(gameId);
-		if (fromJoin) {
-			socket.to(gameId).emit('/hello', user);
-		}
-		socket.to(gameId).on('/user', (users) => {
+		socket.emit('/hello', gameId, user);
+		socket.on('/user', (users) => {
 			setUsers(users);
 		});
-
-		return () => {
-			console.log('LOBBY: destroy');
-			socket.leave(gameId);
-		}
 	}, []);
 
 	return (
