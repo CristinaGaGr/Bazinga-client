@@ -9,8 +9,9 @@
 }
 
 .container {
-
   overflow: auto;
+  position: absolute;
+  will-change: transform, opacity;
 
   &:nth-child(2) {
     flex: 1;
@@ -38,6 +39,7 @@
 
   .categoriesContainer {
     margin-top: 190px;
+
 
     & > * {
       width: 100%;
