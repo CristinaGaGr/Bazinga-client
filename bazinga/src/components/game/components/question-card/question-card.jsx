@@ -18,7 +18,12 @@ const CardA = ({img, category}) => {
 const CardB = ({img, question}) => {
 
 	const [selectedOption, setSelectedOption] = useState('');
-	const [disable, setDisable] = useState(false);
+
+	const sendAnswer = (answer) => {
+		setSelectedOption(answer);
+		socket.emit('/answer', question.id, answer, 4000)
+	};
+
 	const getOptionLabel = (index) => {
 		switch (index) {
 			case 0:
@@ -39,7 +44,9 @@ const CardB = ({img, question}) => {
 	});
 
 	const counterEnd = () => {
-		console.log('I send response');
+		if (!selectedOption.length) {
+			sendAnswer('');
+		}
 	};
 
 	return (
@@ -55,7 +62,7 @@ const CardB = ({img, question}) => {
 					{question.options.map((e, i) =>
 						<button key={e}
 								className={styles.option}
-								onClick={() => setSelectedOption(e)}
+								onClick={() => sendAnswer(e)}
 								disabled={(selectedOption.length && selectedOption !== e)}>
 							<div className={styles.label}>{getOptionLabel(i)}</div>
 							<span dangerouslySetInnerHTML={{__html: e}}/>
