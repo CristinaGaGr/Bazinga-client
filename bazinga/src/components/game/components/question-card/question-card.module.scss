@@ -16,6 +16,11 @@
 
 
   .a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
     img {
       width: 128px;
       height: 128px;

@@ -23,7 +23,7 @@ const CardB = ({img, question}) => {
 		const finalTime = new Date();
 		const resultTime = finalTime - initialTime;
 		setSelectedOption(answer);
-		socket.emit('/answer', question.id, answer, resultTime)
+		socket.emit('/answer', question.id, answer, resultTime);
 	};
 
 	const getOptionLabel = (index) => {
