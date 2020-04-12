@@ -16,17 +16,26 @@ export const Username = () => {
 	const goToGame = (e) => {
 		e.preventDefault();
 		if (from === 'create') {
+			const mockUser = {
+				_id: null,
+				username
+			};
+			dispatch(setUserAction(mockUser));
 			history.push('/set');
 		} else {
 			let usernameToSend = '';
 			if (user) {
-				usernameToSend = user;
+				usernameToSend = user.username;
 			} else {
 				usernameToSend = username;
 			}
 			joinGame(usernameToSend, pin).then((res) => {
+				const mockUser = {
+					_id: null,
+					username: usernameToSend
+				};
 				dispatch(setGameAction(pin, res));
-				dispatch(setUserAction(usernameToSend));
+				dispatch(setUserAction(mockUser));
 				dispatch(fromJoinAction());
 				history.push('/game');
 			});

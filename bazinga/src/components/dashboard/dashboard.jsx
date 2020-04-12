@@ -23,7 +23,7 @@ export const Dashboard = () => {
 			{(firstLoad) &&
 			<>
 				{(user) ?
-					<Link to={'/history'}>{user}</Link>
+					<Link to={'/history'}>{user.username}</Link>
 					:
 					<>
 						<Link to={'/signin'}>Sign In</Link>

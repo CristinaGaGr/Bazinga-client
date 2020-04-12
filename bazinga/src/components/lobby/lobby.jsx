@@ -5,7 +5,6 @@ import { animated } from 'react-spring';
 
 export const Lobby = ({style, className, pinCode, users, startGame, fromJoin}) => {
 	const pinCodeRef = useRef(null);
-	console.log(className);
 	const copy = () => {
 		pinCodeRef.current.select();
 		navigator.clipboard.writeText(pinCodeRef.current.value);
