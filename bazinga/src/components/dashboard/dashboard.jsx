@@ -1,14 +1,14 @@
 import React from 'react';
 import styles from  './dashboard.module.scss';
 import { Link, useHistory } from 'react-router-dom';
-import { useStateValue } from '../../context/context';
+import { useGlobalContext } from '../../context/context';
 import { createGame } from '../../api/game.api';
 import { setGameAction } from '../../context/actions';
 
 
 export const Dashboard = () => {
 	const history = useHistory();
-	const [{user, firstLoad}] = useStateValue();
+	const [{user, firstLoad}] = useGlobalContext();
 
 	const fromCreate = () => {
 		if (user) {

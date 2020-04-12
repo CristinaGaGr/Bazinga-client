@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import './username.scss';
 import { useHistory, useParams } from 'react-router-dom';
-import { useStateValue } from '../../context/context';
+import { useGlobalContext } from '../../context/context';
 import { joinGame } from '../../api/game.api';
 import { fromJoinAction, setGameAction, setUserAction } from '../../context/actions';
 
 export const Username = () => {
 	const history = useHistory();
-	const [{user}, dispatch] = useStateValue();
+	const [{user}, dispatch] = useGlobalContext();
 	const {from} = useParams();
 
 	const [username, setUsername] = useState('');
@@ -28,7 +28,7 @@ export const Username = () => {
 				dispatch(setGameAction(pin, res));
 				dispatch(setUserAction(usernameToSend));
 				dispatch(fromJoinAction());
-				history.push('/lobby');
+				history.push('/game');
 			});
 		}
 	};

@@ -3,13 +3,13 @@ import './auth.scss'
 import { useForm } from 'react-hook-form';
 import { signup } from '../../api/auth.api';
 import { setUserAction } from '../../context/actions';
-import { useStateValue } from '../../context/context';
+import { useGlobalContext } from '../../context/context';
 import { useHistory } from 'react-router-dom';
 
 
 export const SignUp = () => {
 	const history = useHistory();
-	const [{}, dispatch] = useStateValue();
+	const [{}, dispatch] = useGlobalContext();
 	const { register, handleSubmit } = useForm();
 	const onSubmit = data => {
 		const {username, email, password, repeatPassword} = data;

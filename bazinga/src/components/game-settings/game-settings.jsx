@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './game-settings.module.scss';
 import { useHistory } from 'react-router-dom';
 import { createGame } from '../../api/game.api';
-import { useStateValue } from '../../context/context';
+import { useGlobalContext } from '../../context/context';
 import { setGameAction } from '../../context/actions';
 import { categoriesArray, difficultyArray, numberOfQuestionsArray } from '../../constants/setting.constants';
 
@@ -37,7 +37,7 @@ export const GameSettings = () => {
 	const [difficulty, setDifficulty] = useState('');
 	const [categories, setCategories] = useState([]);
 
-	const [{user}, dispatch] = useStateValue();
+	const [{user}, dispatch] = useGlobalContext();
 
 	const chooseCategory = (category) => {
 		if (category === 'all') {
@@ -57,7 +57,7 @@ export const GameSettings = () => {
 		createGame(user, numberOfQuestions, difficulty, categories).then((res) => {
 			const {pin, game_id} = res;
 			dispatch(setGameAction(pin, game_id));
-			history.push('/lobby');
+			history.push('/game');
 		})
 	};
 

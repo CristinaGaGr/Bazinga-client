@@ -70,6 +70,9 @@
 
       &[data-selected='false'] {
         box-shadow: 0 4px 0 0 rgba($button-category-shadow, 0.6);
+        &:active {
+          box-shadow: 0 0 0 0 $button-category-shadow;
+        }
       }
 
       .check {
