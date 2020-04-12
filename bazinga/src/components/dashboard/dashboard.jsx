@@ -2,8 +2,6 @@ import React from 'react';
 import styles from  './dashboard.module.scss';
 import { Link, useHistory } from 'react-router-dom';
 import { useGlobalContext } from '../../context/context';
-import { createGame } from '../../api/game.api';
-import { setGameAction } from '../../context/actions';
 
 
 export const Dashboard = () => {
@@ -20,7 +18,6 @@ export const Dashboard = () => {
 
 	return (
 		<div className={`container ${styles.container}`}>
-			{/*<h1>BAZINGA!</h1>*/}
 			<button className={'btn'} onClick={fromCreate}>CREATE</button>
 			<Link className={'btn'} to={'/username/join'}>JOIN</Link>
 			{(firstLoad) &&

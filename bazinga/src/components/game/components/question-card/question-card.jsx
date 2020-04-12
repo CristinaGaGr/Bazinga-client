@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import styles from './question-card.module.scss';
 import { useSpring, animated as a } from 'react-spring'
-import { Question } from '../question/question';
 import { categoriesArray } from '../../../../constants/setting.constants';
+import { socket } from '../../../../api/api';
 
 
 const CardA = ({img, category}) => {
 	return (
-		<div>
+		<div className={styles.a}>
 			<img src={img} alt={'category-icon'}/>
 			<div>{category}</div>
 		</div>
@@ -16,21 +16,60 @@ const CardA = ({img, category}) => {
 
 
 const CardB = ({img, question}) => {
+
+	const [selectedOption, setSelectedOption] = useState('');
+	const [disable, setDisable] = useState(false);
+	const getOptionLabel = (index) => {
+		switch (index) {
+			case 0:
+				return 'A';
+			case 1:
+				return 'B';
+			case 2:
+				return 'C';
+			default:
+				return 'D'
+		}
+	};
+
+	useEffect(() => {
+		socket.on('/correct-answer', () => {
+
+		})
+	});
+
+	const counterEnd = () => {
+		console.log('I send response');
+	};
+
 	return (
-		<div>
-			<img src={img} alt={'category-icon'}/>
-			<div dangerouslySetInnerHTML={{__html: question.question}}/>
-			<div>{question.options.map((e) =>
-					<button key={e}>
-						<span dangerouslySetInnerHTML={{__html: e}}/>
-					</button>
-				)}
+		<div className={styles.b}>
+			<div className={styles.loading}>
+				<div className={styles.counter} onAnimationEnd={counterEnd}/>
+			</div>
+			<div className={styles.questionCard}>
+				<img src={img} alt={'category-icon'}/>
+				<div className={styles.question}
+					 dangerouslySetInnerHTML={{__html: question.question}}/>
+				<div className={styles.options}>
+					{question.options.map((e, i) =>
+						<button key={e}
+								className={styles.option}
+								onClick={() => setSelectedOption(e)}
+								disabled={(selectedOption.length && selectedOption !== e)}>
+							<div className={styles.label}>{getOptionLabel(i)}</div>
+							<span dangerouslySetInnerHTML={{__html: e}}/>
+							{(selectedOption.length && selectedOption !== e) ?
+								<div className={styles.disabled}/> : <></>}
+						</button>
+					)}
+				</div>
 			</div>
 		</div>
 	)
 };
 
-export const QuestionCard = ({question}) => {
+export const QuestionCard = ({style, className, question}) => {
 	const [img, setImg] = useState('');
 	const [category, setCategory] = useState('');
 	const [flipped, set] = useState(false);
@@ -43,25 +82,26 @@ export const QuestionCard = ({question}) => {
 	useEffect(() => {
 		setTimeout(() => {
 			set(state => !state);
-		}, 3000)
+		}, 2000)
 	}, []);
 
 
 	useEffect(() => {
 		const found = categoriesArray.find((e) => e.value === question.category);
-		setImg(found.imgSrc);
+		setImg(found.imgSrcM);
 		setCategory(found.label);
 	}, [question]);
 
 	return (
-		<div>
-			<a.div className={styles.card} style={{opacity: opacity.interpolate(o => 1 - o), transform}}>
+		<a.div style={{...style}} className={className}>
+			<a.div className={styles.card}
+				   style={{opacity: opacity.interpolate(o => 1 - o), transform}}>
 				<CardA img={img} category={category}/>
 			</a.div>
 			<a.div className={styles.card}
 				   style={{opacity, transform: transform.interpolate(t => `${t} rotateY(180deg)`)}}>
 				<CardB img={img} question={question}/>
 			</a.div>
-		</div>
+		</a.div>
 	)
 };

@@ -1,16 +1,18 @@
 import React, { useRef } from 'react';
 import './lobby.scss';
+import { animated } from 'react-spring';
 
-export const Lobby = ({pinCode, users, startGame, fromJoin}) => {
+
+export const Lobby = ({style, className, pinCode, users, startGame, fromJoin}) => {
 	const pinCodeRef = useRef(null);
-
+	console.log(className);
 	const copy = () => {
 		pinCodeRef.current.select();
 		navigator.clipboard.writeText(pinCodeRef.current.value);
 	};
 
 	return (
-		<div>
+		<animated.div style={{...style}} className={className}>
 			<div>
 				<h4>Copy and share:</h4>
 				<input ref={pinCodeRef} type={'text'} value={pinCode} disabled={true}/>
@@ -23,6 +25,6 @@ export const Lobby = ({pinCode, users, startGame, fromJoin}) => {
 				)}
 			</div>
 			{!fromJoin && <button onClick={startGame}>Start Game!</button>}
-		</div>
+		</animated.div>
 	)
 };

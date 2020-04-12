@@ -19,48 +19,73 @@ export const difficultyArray = [
 
 export const categoriesArray = [
 	{
+		value: 'all',
+		label: 'All',
+		imgSrcS: process.env.PUBLIC_URL + '/assets/images/brain.png',
+		imgSrcM: process.env.PUBLIC_URL + '/assets/images/brain@2x.png',
+		imgSrcL: process.env.PUBLIC_URL + '/assets/images/brain@3x.png'
+	},
+	{
 		value: 'Entertainment: Books',
 		label: 'Books',
-		imgSrc: process.env.PUBLIC_URL + '/assets/images/book.png'
+		imgSrcS: process.env.PUBLIC_URL + '/assets/images/book.png',
+		imgSrcM: process.env.PUBLIC_URL + '/assets/images/book@2x.png',
+		imgSrcL: process.env.PUBLIC_URL + '/assets/images/book@3x.png'
 	},
 	{
 		value: 'Entertainment: Film',
 		label: 'Films',
-		imgSrc: process.env.PUBLIC_URL + '/assets/images/films.png'
+		imgSrcS: process.env.PUBLIC_URL + '/assets/images/films.png',
+		imgSrcM: process.env.PUBLIC_URL + '/assets/images/films@2x.png',
+		imgSrcL: process.env.PUBLIC_URL + '/assets/images/films@3x.png'
 	},
 	{
 		value: 'Entertainment: Music',
 		label: 'Music',
-		imgSrc: process.env.PUBLIC_URL + '/assets/images/music.png'
+		imgSrcS: process.env.PUBLIC_URL + '/assets/images/music.png',
+		imgSrcM: process.env.PUBLIC_URL + '/assets/images/music@2x.png',
+		imgSrcL: process.env.PUBLIC_URL + '/assets/images/music@3x.png'
 	},
 	{
 		value: 'Entertainment: Television',
 		label: 'TV',
-		imgSrc: process.env.PUBLIC_URL + '/assets/images/tv.png'
+		imgSrcS: process.env.PUBLIC_URL + '/assets/images/tv.png',
+		imgSrcM: process.env.PUBLIC_URL + '/assets/images/tv@2x.png',
+		imgSrcL: process.env.PUBLIC_URL + '/assets/images/tv@3x.png'
 	},
 	{
 		value: 'Entertainment: Video Games',
 		label: 'Videogames',
-		imgSrc: process.env.PUBLIC_URL + '/assets/images/videoGames.png'
+		imgSrcS: process.env.PUBLIC_URL + '/assets/images/videoGames.png',
+		imgSrcM: process.env.PUBLIC_URL + '/assets/images/videoGames@2x.png',
+		imgSrcL: process.env.PUBLIC_URL + '/assets/images/videoGames@3x.png'
 	},
 	{
 		value: 'Science & Nature',
 		label: 'Science & Nature',
-		imgSrc: process.env.PUBLIC_URL + '/assets/images/science.png'
+		imgSrcS: process.env.PUBLIC_URL + '/assets/images/science.png',
+		imgSrcM: process.env.PUBLIC_URL + '/assets/images/science@2x.png',
+		imgSrcL: process.env.PUBLIC_URL + '/assets/images/science@3x.png'
 	},
 	{
 		value: 'Geography',
 		label: 'Geography',
-		imgSrc: process.env.PUBLIC_URL + '/assets/images/geo.png'
+		imgSrcS: process.env.PUBLIC_URL + '/assets/images/geo.png',
+		imgSrcM: process.env.PUBLIC_URL + '/assets/images/geo@2x.png',
+		imgSrcL: process.env.PUBLIC_URL + '/assets/images/geo@3x.png'
 	},
 	{
 		value: 'Sports',
 		label: 'Sports',
-		imgSrc: process.env.PUBLIC_URL + '/assets/images/sports.png'
+		imgSrcS: process.env.PUBLIC_URL + '/assets/images/sports.png',
+		imgSrcM: process.env.PUBLIC_URL + '/assets/images/sports@2x.png',
+		imgSrcL: process.env.PUBLIC_URL + '/assets/images/sports@3x.png'
 	},
 	{
 		value: 'History',
 		label: 'History',
-		imgSrc: process.env.PUBLIC_URL + '/assets/images/history.png'
+		imgSrcS: process.env.PUBLIC_URL + '/assets/images/history.png',
+		imgSrcM: process.env.PUBLIC_URL + '/assets/images/history@2x.png',
+		imgSrcL: process.env.PUBLIC_URL + '/assets/images/history@3x.png'
 	}
 ];

@@ -27,6 +27,12 @@ a, a:active {
 }
 
 
+button, button:active, button:focus {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
 .btn {
   font-family: SF-PRO;
   color: white;
@@ -39,10 +45,8 @@ a, a:active {
   padding: $s12px $s24px;
 
   transition: 0.2s all;
-  outline: none;
 
   &:active {
-    outline: none;
     transform: translateY(4px);
     box-shadow: 0 0 0 0 $button-shadow;
   }

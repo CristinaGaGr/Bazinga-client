@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import styles from './game-settings.module.scss';
 import { useHistory } from 'react-router-dom';
 import { createGame } from '../../api/game.api';
@@ -7,6 +7,7 @@ import { setGameAction } from '../../context/actions';
 import { categoriesArray, difficultyArray, numberOfQuestionsArray } from '../../constants/setting.constants';
 import { CategoryButton } from './components/category-button';
 import { useTransition, animated } from 'react-spring';
+import { useHorizontalTransition } from '../../constants/animations.constants';
 
 
 const Screen1 = ({style, numberOfQuestions, setNumberOfQuestions, nextScreen}) => {
@@ -62,10 +63,6 @@ const Screen3 = ({style, categories, chooseCategory, goToLobby}) => {
 					  className={`container ${styles.container}`}>
 			<div className={styles.title}>Categories?</div>
 			<div className={styles.categoriesContainer}>
-				<CategoryButton label={'All'}
-								value={'all'}
-								selectedCategories={categories}
-								chooseCategory={chooseCategory}/>
 				{categoriesArray.map(e =>
 					<CategoryButton key={e.value}
 									{...e}
@@ -92,7 +89,7 @@ export const GameSettings = () => {
 
 	const chooseCategory = (category) => {
 		if (category === 'all') {
-			setCategories(categoriesArray.map(e => e.value));
+			setCategories(categoriesArray.filter(e => e.value !== 'all').map(e => e.value));
 		} else {
 			const existCategory = categories.find((e) => e === category);
 			if (existCategory) {
@@ -118,17 +115,12 @@ export const GameSettings = () => {
 		}, 200);
 	};
 
-	const transitions = useTransition(screen, p => p, {
-		from: {opacity: 0, transform: 'translate3d(100%,0,0)'},
-		enter: {opacity: 1, transform: 'translate3d(0%,0,0)'},
-		leave: {opacity: 0, transform: 'translate3d(-50%,0,0)'},
-	});
+	const transitions = useHorizontalTransition(screen);
 
 	return (
 		<div>
 			<div className={styles.slides}>{screen}/3</div>
 			{transitions.map(({item, props, key}) => {
-				console.log(item);
 				switch (item) {
 					case 1:
 						return <Screen1 style={props}
@@ -149,8 +141,9 @@ export const GameSettings = () => {
 										key={key}
 										categories={categories}
 										chooseCategory={chooseCategory}
-										goToLobby={goToLobby}/>
-
+										goToLobby={goToLobby}/>;
+					default:
+						return <></>
 				}
 			})}
 		</div>

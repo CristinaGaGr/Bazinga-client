@@ -1,8 +1,8 @@
 export const initialState = {
 	user: undefined,
 	firstLoad: false,
-	gameId: null,
-	pinCode: null,
+	gameId: '5e930af1dbafd7181fb368a6',
+	pinCode: 9377,
 	fromJoin: false
 };
 
