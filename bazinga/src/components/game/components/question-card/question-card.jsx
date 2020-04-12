@@ -16,12 +16,14 @@ const CardA = ({img, category}) => {
 
 
 const CardB = ({img, question}) => {
-
 	const [selectedOption, setSelectedOption] = useState('');
+	const [initialTime, setInitialTime] = useState(null);
 
 	const sendAnswer = (answer) => {
+		const finalTime = new Date();
+		const resultTime = finalTime - initialTime;
 		setSelectedOption(answer);
-		socket.emit('/answer', question.id, answer, 4000)
+		socket.emit('/answer', question.id, answer, resultTime)
 	};
 
 	const getOptionLabel = (index) => {
@@ -52,7 +54,9 @@ const CardB = ({img, question}) => {
 	return (
 		<div className={styles.b}>
 			<div className={styles.loading}>
-				<div className={styles.counter} onAnimationEnd={counterEnd}/>
+				<div className={styles.counter}
+					 onAnimationStart={() => setInitialTime(new Date())}
+					 onAnimationEnd={counterEnd}/>
 			</div>
 			<div className={styles.questionCard}>
 				<img src={img} alt={'category-icon'}/>
