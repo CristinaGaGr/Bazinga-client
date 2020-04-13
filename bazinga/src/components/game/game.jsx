@@ -16,7 +16,7 @@ export const Game = () => {
 	const [question, setQuestion] = useState(null);
 
 	const startGame = () => {
-		socket.emit('/start', gameId);
+		socket.emit('/start', gameId, user);
 	};
 
 	useEffect(() => {
