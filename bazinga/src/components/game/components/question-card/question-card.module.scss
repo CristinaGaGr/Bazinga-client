@@ -74,7 +74,7 @@
 
       padding: $s24px;
 
-      img {
+      .categoryImg {
         width: $s56px;
         height: $s56px;
         margin-bottom: $s24px;
@@ -133,6 +133,50 @@
             border-radius: 24px;
             background: rgba($background-card, 0.6);
           }
+
+          &.correctOption {
+            border: 1px rgb(8, 127, 57) solid;
+            box-shadow: 0 0 0 4px rgb(57, 155, 98);
+          }
+
+          &.wrongOption {
+            border:  1px rgb(221, 67, 44) solid;
+            box-shadow: 0 0 0 4px rgb(199, 150, 143);
+          }
+
+          .check {
+            width: $s24px;
+            height: $s24px;
+            border-radius: 50%;
+
+            position: absolute;
+            top: 50%;
+            right: $s6px;
+            transform: translate(0, -50%);
+
+            display: none;
+
+            &.showCorrect {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+
+            &.correct {
+              background: rgb(38, 206, 164);
+            }
+
+            &.wrong {
+              background: rgb(221, 67, 44);
+            }
+
+            img {
+              width: $s12px;
+              height: $s12px;
+            }
+
+          }
+
         }
       }
     }

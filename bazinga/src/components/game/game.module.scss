@@ -1,6 +1,6 @@
+@import 'src/sass/components/containers';
+
 
 .container {
-  overflow: auto;
-  position: absolute;
-  will-change: transform, opacity;
+  @extend .container-transition;
 }

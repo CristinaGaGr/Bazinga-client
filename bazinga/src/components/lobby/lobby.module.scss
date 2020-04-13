@@ -1,0 +1,100 @@
+@import 'src/sass/variables/colors';
+@import 'src/sass/variables/sizes';
+
+
+.container {
+  height: calc(100% - #{$s24px} * 2);
+  width: calc(100% - #{$s24px} * 2);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+
+  & > * {
+    text-align: center;
+  }
+
+  .copyShare {
+    padding: 0 $s32px;
+    margin-bottom: $s48px;
+
+    h4 {
+      font-size: 35px;
+      margin-bottom: 1rem;
+    }
+
+    .pinCopy {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: center;
+
+      input {
+        font-size: 24px;
+        letter-spacing: 12px;
+        background: rgba(white, 0.7);
+        box-shadow: none;
+        margin: 0;
+        width: 100%;
+      }
+
+      button {
+        position: absolute;
+        top: 50%;
+        right: $s16px;
+        transform: translate(0, -50%);
+        background: none;
+
+        img {
+          width: 24px;
+        }
+      }
+    }
+  }
+
+  .friendsConnected {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    h2 {
+      font-size: 35px;
+      margin-bottom: $s32px;
+    }
+
+    .users {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+
+      height: 300px;
+      overflow: auto;
+
+      & > div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        padding-left: $s10px;
+
+        .greenDot {
+          width: $s8px;
+          height: $s8px;
+          border-radius: 50%;
+          background: #62bd19;
+          margin-right: $s10px;
+        }
+      }
+    }
+  }
+
+  .start {
+    position: absolute;
+    bottom: 4px;
+    width: 100%;
+  }
+}

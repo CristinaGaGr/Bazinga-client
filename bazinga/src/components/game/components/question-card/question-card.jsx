@@ -19,6 +19,8 @@ const CardB = ({img, question}) => {
 	const [selectedOption, setSelectedOption] = useState('');
 	const [initialTime, setInitialTime] = useState(null);
 
+	const [correctAnswer, setCorrectAnswer] = useState('');
+
 	const sendAnswer = (answer) => {
 		const finalTime = new Date();
 		const resultTime = finalTime - initialTime;
@@ -40,8 +42,8 @@ const CardB = ({img, question}) => {
 	};
 
 	useEffect(() => {
-		socket.on('/correct-answer', () => {
-
+		socket.on('/correct-answer', (res) => {
+			setCorrectAnswer(res);
 		})
 	});
 
@@ -59,20 +61,39 @@ const CardB = ({img, question}) => {
 					 onAnimationEnd={counterEnd}/>
 			</div>
 			<div className={styles.questionCard}>
-				<img src={img} alt={'category-icon'}/>
+				<img src={img} alt={'category-icon'} className={styles.categoryImg}/>
 				<div className={styles.question}
 					 dangerouslySetInnerHTML={{__html: question.question}}/>
 				<div className={styles.options}>
 					{question.options.map((e, i) =>
-						<button key={e}
-								className={styles.option}
+						{
+							const isSelected = e === selectedOption;
+							const isCorrect = e === correctAnswer;
+							return <button key={e}
+								className={
+									`${styles.option} 
+									${isCorrect && styles.correctOption}
+									${correctAnswer.length && isSelected && !isCorrect && styles.wrongOption}
+									`
+								}
 								onClick={() => sendAnswer(e)}
 								disabled={(selectedOption.length && selectedOption !== e)}>
 							<div className={styles.label}>{getOptionLabel(i)}</div>
 							<span dangerouslySetInnerHTML={{__html: e}}/>
+							<div className={
+								`${styles.check}
+								 ${correctAnswer.length && isSelected ? styles.showCorrect : ''}
+								 ${correctAnswer.length && isSelected && isCorrect ? styles.correct : styles.wrong}`
+							}>
+								{isCorrect &&
+								<img src={process.env.PUBLIC_URL + '/assets/images/check.png'} alt={'correct'}/>}
+								{correctAnswer.length && !isCorrect &&
+								<img src={process.env.PUBLIC_URL + '/assets/images/cross.png'} alt={'correct'}/>}
+							</div>
+
 							{(selectedOption.length && selectedOption !== e) ?
-								<div className={styles.disabled}/> : <></>}
-						</button>
+							<div className={styles.disabled}/> : <></>}
+						</button>}
 					)}
 				</div>
 			</div>

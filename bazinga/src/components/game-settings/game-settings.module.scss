@@ -9,9 +9,8 @@
 }
 
 .container {
-  overflow: auto;
-  position: absolute;
-  will-change: transform, opacity;
+  @extend .container-transition;
+
 
   &:nth-child(2) {
     flex: 1;

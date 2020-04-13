@@ -42,7 +42,7 @@ export const Game = () => {
 				switch (item) {
 					case 'lobby':
 						return <Lobby style={props}
-									  className={`container ${styles.container} `}
+									  className={styles.container}
 									  key={key}
 									  pinCode={pinCode}
 									  users={users}
@@ -50,7 +50,7 @@ export const Game = () => {
 									  fromJoin={fromJoin}/>;
 					case 'question':
 						return <QuestionCard style={props}
-											 className={`container ${styles.container}`}
+											 className={styles.container}
 											 key={key}
 											 question={question}/>;
 					default:

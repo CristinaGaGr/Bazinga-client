@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './username.scss';
+import styles from './username.module.scss';
 import { useHistory, useParams } from 'react-router-dom';
 import { useGlobalContext } from '../../context/context';
 import { joinGame } from '../../api/game.api';
@@ -43,13 +43,13 @@ export const Username = () => {
 	};
 
 	return (
-		<form>
+		<form className={styles.container}>
 			{(!user) &&
 			<>
-				<label>Username</label>
 				<input type={'text'}
 					   name={'username'}
 					   onChange={(e) => setUsername(e.target.value)}
+					   max={32}
 					   required
 					   placeholder={'Write your username'}
 				/>
@@ -60,6 +60,8 @@ export const Username = () => {
 				type={'number'}
 				name={'pincode'}
 				onChange={(e) => setPin(e.target.value)}
+				min={1000}
+				max={9999}
 				required
 				placeholder={'Enter Pin Code'}
 			/>

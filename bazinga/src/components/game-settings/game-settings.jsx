@@ -6,14 +6,14 @@ import { useGlobalContext } from '../../context/context';
 import { setGameAction } from '../../context/actions';
 import { categoriesArray, difficultyArray, numberOfQuestionsArray } from '../../constants/setting.constants';
 import { CategoryButton } from './components/category-button';
-import { useTransition, animated } from 'react-spring';
+import { animated } from 'react-spring';
 import { useHorizontalTransition } from '../../constants/animations.constants';
 
 
 const Screen1 = ({style, numberOfQuestions, setNumberOfQuestions, nextScreen}) => {
 	return (
 		<animated.div style={{...style}}
-					  className={`container ${styles.container}`}>
+					  className={styles.container}>
 			<div className={styles.title}>Number of questions?</div>
 			<div className={styles.buttonsContainer}>
 				{numberOfQuestionsArray.map(e =>
@@ -37,7 +37,7 @@ const Screen1 = ({style, numberOfQuestions, setNumberOfQuestions, nextScreen}) =
 const Screen2 = ({style, setDifficulty, nextScreen, difficulty}) => {
 	return (
 		<animated.div style={{...style}}
-					  className={`container ${styles.container}`}>
+					  className={styles.container}>
 			<div className={styles.title}>Difficulty?</div>
 			<div className={styles.buttonsContainer}>
 				{difficultyArray.map(e =>
@@ -60,7 +60,7 @@ const Screen2 = ({style, setDifficulty, nextScreen, difficulty}) => {
 const Screen3 = ({style, categories, chooseCategory, goToLobby}) => {
 	return (
 		<animated.div style={{...style}}
-					  className={`container ${styles.container}`}>
+					  className={styles.container}>
 			<div className={styles.title}>Categories?</div>
 			<div className={styles.categoriesContainer}>
 				{categoriesArray.map(e =>
