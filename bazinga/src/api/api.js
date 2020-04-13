@@ -1,7 +1,7 @@
 import axios from 'axios';
 import socketIOClient from "socket.io-client";
 
-const baseUrl = 'http://localhost:4000';
+const baseUrl =  process.env.REACT_APP_BASE_URL;
 
 export const axiosInstance = axios.create({
 	baseURL: baseUrl,
