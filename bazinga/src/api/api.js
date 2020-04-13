@@ -4,7 +4,8 @@ import socketIOClient from "socket.io-client";
 const baseUrl = 'http://localhost:4000';
 
 export const axiosInstance = axios.create({
-	baseURL: baseUrl
+	baseURL: baseUrl,
+	withCredentials: true 
 });
 
 axiosInstance.interceptors.response.use(response => {
