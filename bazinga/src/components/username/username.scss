@@ -1,0 +1,21 @@
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+ label {
+   font-size: 34px;
+   margin-bottom: 1rem;
+   margin-top: 6rem;
+ }
+
+  input {
+    width: 80%;
+  }
+
+  button {
+    position: fixed;
+    bottom: 3rem;
+  }
+}

@@ -1,0 +1,47 @@
+
+
+.copy-share {
+  //position: fixed;
+  //top: 4rem;
+
+  h4 {
+    font-size: 35px;
+    margin-bottom: 1rem;
+  }
+}
+
+.pin-copy {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+
+  input {
+    margin-right: 0.5rem;
+    padding: 1rem;
+    font-size: 24px;
+    letter-spacing: 12px;
+    text-align: center;
+    margin-bottom: 0;
+    background: rgba(white, 0.6);
+    box-shadow: none;
+  }
+
+  button {
+    background: none;
+
+    img {
+      width: 24px;
+    }
+  }
+}
+
+.friends-connected {
+  h2 {
+    margin-bottom: 150px;
+    font-size: 35px;
+  }
+}
+
+.start {
+}

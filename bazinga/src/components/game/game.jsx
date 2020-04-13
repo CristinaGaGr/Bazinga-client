@@ -42,7 +42,7 @@ export const Game = () => {
 				switch (item) {
 					case 'lobby':
 						return <Lobby style={props}
-									  className={`container ${styles.container}`}
+									  className={`container ${styles.container} `}
 									  key={key}
 									  pinCode={pinCode}
 									  users={users}

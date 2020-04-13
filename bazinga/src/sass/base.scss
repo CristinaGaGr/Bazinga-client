@@ -89,3 +89,17 @@ button, button:active, button:focus {
   flex-direction: column;
   justify-content: center;
 }
+
+input {
+  font-size: 20px;
+  background: white;
+  border-radius: 24px;
+  padding: 1rem;
+  color: black;
+  box-shadow: 1px 1px 1px 1px ;
+  margin-bottom: 1rem;
+  width: 150px;
+  outline: none;
+  text-align: center;
+
+}

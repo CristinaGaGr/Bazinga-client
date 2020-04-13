@@ -64,7 +64,7 @@ export const Username = () => {
 				placeholder={'Enter Pin Code'}
 			/>
 			}
-			<button type={'submit'} onClick={goToGame}>Go</button>
+			<button className={'btn'} type={'submit'} onClick={goToGame}>Go</button>
 		</form>
 	)
 };
