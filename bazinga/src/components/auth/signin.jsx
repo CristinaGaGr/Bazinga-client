@@ -10,7 +10,7 @@ import { useHistory } from 'react-router-dom';
 export const SignIn = () => {
 	const history = useHistory();
 	const [{}, dispatch] = useGlobalContext();
-	const { register, handleSubmit, errors } = useForm();
+	const {register, handleSubmit, errors} = useForm();
 	const onSubmit = data => {
 		const {username, password} = data;
 		signin(username, password)
@@ -18,14 +18,21 @@ export const SignIn = () => {
 				dispatch(setUserAction(res));
 				history.push('/');
 			})
-			.catch((error) => console.log(error) )
+			.catch((error) => console.log(error))
 	};
 
 	return (
 		<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-			<input type="text" placeholder="Username" name="Username" ref={register({required: true})} />
-			<input type="password" placeholder="Password" name="Password" ref={register({required: true, min: 6})} />
-
+			<div className={styles.inputContainer}>
+				<input type="text" placeholder="Username" name="Username" ref={register({required: true})}/>
+				{errors.Username && <span
+					className={styles.errorMessage}>{errors.Username.message ? errors.Username.message : 'this field is required'}</span>}
+			</div>
+			<div className={styles.inputContainer}>
+				<input type="password" placeholder="Password" name="Password" ref={register({required: true, min: 6})}/>
+				{errors.Password && <span
+					className={styles.errorMessage}>{errors.Password.message ? errors.Password.message: 'this field is required'}</span> }
+			</div>
 			<button className={'btn'} type={'submit'}>Sign In</button>
 		</form>
 	);

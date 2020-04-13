@@ -9,3 +9,8 @@ export const signup = (username, email, password, repeatPassword) => {
 	return axiosInstance.post('/auth/signup', {username, email, password, repeatPassword});
 
 };
+
+export const logout = () => {
+	return axiosInstance.post('/auth/logout', {})
+};
+

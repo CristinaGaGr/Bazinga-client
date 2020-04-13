@@ -1,9 +1,29 @@
+@import 'src/sass/variables/colors';
+@import 'src/sass/variables/sizes';
+
+
 .form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 5rem;
+
+  .inputContainer {
+    position: relative;
+    margin-bottom: 31px;
+  }
+
+  .errorMessage {
+    width: 100%;
+    position: absolute;
+    top: $s62px;
+    left: 0;
+    font-size: $s16px;
+    color: #fe3024;
+    text-align: center;
+  }
+
 
   input {
     width: 80%;
