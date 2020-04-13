@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './username.module.scss';
-import { useHistory, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import { useGlobalContext } from '../../context/context';
 import { joinGame } from '../../api/game.api';
 import { fromJoinAction, setGameAction, setUserAction } from '../../context/actions';
@@ -43,30 +43,33 @@ export const Username = () => {
 	};
 
 	return (
-		<form className={styles.container}>
-			{(!user) &&
-			<>
-				<input type={'text'}
-					   name={'username'}
-					   onChange={(e) => setUsername(e.target.value)}
-					   max={32}
-					   required
-					   placeholder={'Write your username'}
+		<div>
+			<Link className={styles.back} to={'/'}>Back</Link>
+			<form className={styles.container}>
+				{(!user) &&
+				<>
+					<input type={'text'}
+						   name={'username'}
+						   onChange={(e) => setUsername(e.target.value)}
+						   max={32}
+						   required
+						   placeholder={'Write your username'}
+					/>
+				</>
+				}
+				{(from === 'join') &&
+				<input
+					type={'number'}
+					name={'pincode'}
+					onChange={(e) => setPin(e.target.value)}
+					min={1000}
+					max={9999}
+					required
+					placeholder={'Enter Pin Code'}
 				/>
-			</>
-			}
-			{(from === 'join') &&
-			<input
-				type={'number'}
-				name={'pincode'}
-				onChange={(e) => setPin(e.target.value)}
-				min={1000}
-				max={9999}
-				required
-				placeholder={'Enter Pin Code'}
-			/>
-			}
-			<button className={'btn'} type={'submit'} onClick={goToGame}>Go</button>
-		</form>
+				}
+				<button className={'btn'} type={'submit'} onClick={goToGame}>Go</button>
+			</form>
+		</div>
 	)
 };

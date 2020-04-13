@@ -7,4 +7,22 @@
   & > * {
     margin-bottom: $s16px;
   }
+
+  .auth {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: $s18px;
+    color: $background-card;
+    margin-top: 1rem;
+
+    a {
+      color: $background-card;
+    }
+
+    .createAccount {
+      text-decoration: underline;
+    }
+  }
 }

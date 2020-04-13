@@ -1,5 +1,5 @@
 import React from 'react';
-import './auth.scss'
+import styles from './auth.module.scss'
 import { useForm } from 'react-hook-form';
 import { signup } from '../../api/auth.api';
 import { setUserAction } from '../../context/actions';
@@ -15,21 +15,21 @@ export const SignUp = () => {
 		const {username, email, password, repeatPassword} = data;
 		console.log(data);
 		signup(username, email, password, repeatPassword)
-			.then(() => {
-				dispatch(setUserAction(username));
+			.then((res) => {
+				dispatch(setUserAction(res));
 				history.push('/');
 			})
 			.catch((error) => console.log(error));
 	};
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit)}>
+		<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
 			<input type="text" placeholder="Username" name="username" ref={register({required: true})} />
 			<input type="email" placeholder="Email" name="email" ref={register} />
 			<input type="text" placeholder="Password" name="password" ref={register({required: true, min: 6})} />
 			<input type="text" placeholder="Repeat Password" name="repeatPassword" ref={register} />
 
-			<button type={'submit'}>Sign Up</button>
+			<button className={'btn'} type={'submit'}>Sign Up</button>
 		</form>
 	)
 };

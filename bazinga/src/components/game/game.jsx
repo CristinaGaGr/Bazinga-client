@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './game.module.scss';
 import { QuestionCard } from './components/question-card/question-card';
 import { socket } from '../../api/api';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useGlobalContext } from '../../context/context';
 import { Lobby } from '../lobby/lobby';
 import { useTransition } from 'react-spring';
@@ -38,6 +38,7 @@ export const Game = () => {
 
 	return (
 		<div>
+			<Link className={styles.back} to={'/'}>Back</Link>
 			{transitions.map(({item, props, key}) => {
 				switch (item) {
 					case 'lobby':

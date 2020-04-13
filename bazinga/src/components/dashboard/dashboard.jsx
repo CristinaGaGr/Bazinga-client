@@ -18,18 +18,19 @@ export const Dashboard = () => {
 
 	return (
 		<div className={`container ${styles.container}`}>
-			<button className={'btn'} onClick={fromCreate}>CREATE</button>
+			<button className={'btn'} onClick={fromCreate}>CREATE A GAME</button>
 			<Link className={'btn'} to={'/username/join'}>JOIN</Link>
 			{(firstLoad) &&
-			<>
+			<div className={styles.auth}>
 				{(user) ?
 					<Link to={'/history'}>{user.username}</Link>
 					:
 					<>
 						<Link to={'/signin'}>Sign In</Link>
-						<Link to={'/signup'}>Or create an account</Link>
+						<span>Or <Link className={styles.createAccount} to={'/signup'}>create an account</Link></span>
+
 					</>}
-			</>
+			</div>
 			}
 
 		</div>

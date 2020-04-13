@@ -1,21 +1,16 @@
-form {
+.form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
- label {
-   font-size: 34px;
-   margin-bottom: 1rem;
-   margin-top: 6rem;
- }
+  margin-top: 5rem;
 
   input {
     width: 80%;
+    //margin-top: 3rem;
   }
 
   button {
-    position: fixed;
-    bottom: 3rem;
+    margin-top: 3rem;
   }
 }
