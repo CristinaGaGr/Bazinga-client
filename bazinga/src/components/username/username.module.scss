@@ -33,5 +33,9 @@
   top: $s16px;
   left: $s16px;
   z-index: 1;
-  color: #264889;
+  background: none;
+
+  img {
+    width: 40px;
+  }
 }

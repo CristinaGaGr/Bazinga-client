@@ -38,7 +38,7 @@ export const Game = () => {
 
 	return (
 		<div>
-			{screen === 'lobby' && <Link className={styles.back} to={'/'}>Back</Link>}
+			{screen === 'lobby' && <button className={styles.back}  onClick={() => history.push('/')}><img src={process.env.PUBLIC_URL + '/assets/images/back-arrow.png'} alt={'back-arrow'}/></button>}
 			{transitions.map(({item, props, key}) => {
 				switch (item) {
 					case 'lobby':

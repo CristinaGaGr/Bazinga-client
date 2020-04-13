@@ -44,7 +44,7 @@ export const Username = () => {
 
 	return (
 		<div>
-			<Link className={styles.back} to={'/'}>Back</Link>
+			<button className={styles.back} onClick={() => history.push('/')}><img src={process.env.PUBLIC_URL + '/assets/images/back-arrow.png'} alt={'back-arrow'}/></button>
 			<form className={styles.container}>
 				{(!user) &&
 				<>
