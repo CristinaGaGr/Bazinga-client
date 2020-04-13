@@ -9,5 +9,7 @@
 .back {
   position: fixed;
   top: $s16px;
-  left: $s16px
+  left: $s16px;
+  z-index: 1;
+  color: #264889;
 }

@@ -1,13 +1,18 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import styles from './lobby.module.scss';
 import { animated } from 'react-spring';
 
 
 export const Lobby = ({style, className, pinCode, users, startGame, fromJoin}) => {
+	const [showCopied, setShowCopied] = useState(false);
 	const pinCodeRef = useRef(null);
 	const copy = () => {
+		setShowCopied(true);
 		pinCodeRef.current.select();
 		navigator.clipboard.writeText(pinCodeRef.current.value);
+		setTimeout(() => {
+			setShowCopied(false);
+		}, 2000);
 	};
 
 	return (
@@ -19,6 +24,7 @@ export const Lobby = ({style, className, pinCode, users, startGame, fromJoin}) =
 					<button onClick={copy}>
 						<img src={process.env.PUBLIC_URL + '/assets/images/copy-icon.png'}/>
 					</button>
+					{showCopied && <div className={styles.copiedMessage}>Copied!</div>}
 				</div>
 			</div>
 			<div className={styles.friendsConnected}>

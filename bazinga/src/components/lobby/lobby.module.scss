@@ -18,6 +18,8 @@
   .copyShare {
     padding: 0 $s32px;
     margin-bottom: $s48px;
+    margin-top: 50px;
+
 
     h4 {
       font-size: 35px;
@@ -47,9 +49,16 @@
         transform: translate(0, -50%);
         background: none;
 
+
         img {
           width: 24px;
         }
+      }
+
+      .copiedMessage {
+        position: absolute;
+        top: 70px;
+        right: 0;
       }
     }
   }

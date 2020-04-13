@@ -24,7 +24,7 @@ export const SignIn = () => {
 	return (
 		<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
 			<input type="text" placeholder="Username" name="Username" ref={register({required: true})} />
-			<input type="text" placeholder="Password" name="Password" ref={register({required: true, min: 6})} />
+			<input type="password" placeholder="Password" name="Password" ref={register({required: true, min: 6})} />
 
 			<button className={'btn'} type={'submit'}>Sign In</button>
 		</form>

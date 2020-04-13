@@ -26,8 +26,8 @@ export const SignUp = () => {
 		<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
 			<input type="text" placeholder="Username" name="username" ref={register({required: true})} />
 			<input type="email" placeholder="Email" name="email" ref={register} />
-			<input type="text" placeholder="Password" name="password" ref={register({required: true, min: 6})} />
-			<input type="text" placeholder="Repeat Password" name="repeatPassword" ref={register} />
+			<input type="password" placeholder="Password" name="password" ref={register({required: true, min: 6})} />
+			<input type="password" placeholder="Repeat Password" name="repeatPassword" ref={register} />
 
 			<button className={'btn'} type={'submit'}>Sign Up</button>
 		</form>

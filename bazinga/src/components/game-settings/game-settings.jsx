@@ -10,10 +10,11 @@ import { animated } from 'react-spring';
 import { useHorizontalTransition } from '../../constants/animations.constants';
 
 
-const Screen1 = ({style, numberOfQuestions, setNumberOfQuestions, nextScreen}) => {
+const Screen1 = ({style, numberOfQuestions, setNumberOfQuestions, nextScreen, screen}) => {
 	return (
 		<animated.div style={{...style}}
 					  className={styles.container}>
+			<div className={styles.slides}>{screen}/3</div>
 			<div className={styles.title}>Number of questions?</div>
 			<div className={styles.buttonsContainer}>
 				{numberOfQuestionsArray.map(e =>
@@ -34,10 +35,11 @@ const Screen1 = ({style, numberOfQuestions, setNumberOfQuestions, nextScreen}) =
 };
 
 
-const Screen2 = ({style, setDifficulty, nextScreen, difficulty}) => {
+const Screen2 = ({style, setDifficulty, nextScreen, difficulty, screen}) => {
 	return (
 		<animated.div style={{...style}}
 					  className={styles.container}>
+			<div className={styles.slides}>{screen}/3</div>
 			<div className={styles.title}>Difficulty?</div>
 			<div className={styles.buttonsContainer}>
 				{difficultyArray.map(e =>
@@ -57,10 +59,11 @@ const Screen2 = ({style, setDifficulty, nextScreen, difficulty}) => {
 	)
 };
 
-const Screen3 = ({style, categories, chooseCategory, goToLobby}) => {
+const Screen3 = ({style, categories, chooseCategory, goToLobby, screen}) => {
 	return (
 		<animated.div style={{...style}}
 					  className={styles.container}>
+			<div className={styles.slides}>{screen}/3</div>
 			<div className={styles.title}>Categories?</div>
 			<div className={styles.categoriesContainer}>
 				{categoriesArray.map(e =>
@@ -119,11 +122,11 @@ export const GameSettings = () => {
 
 	return (
 		<div>
-			<div className={styles.slides}>{screen}/3</div>
 			{transitions.map(({item, props, key}) => {
 				switch (item) {
 					case 1:
 						return <Screen1 style={props}
+										screen={screen}
 										key={key}
 										setNumberOfQuestions={setNumberOfQuestions}
 										numberOfQuestions={numberOfQuestions}
@@ -131,6 +134,7 @@ export const GameSettings = () => {
 						/>;
 					case 2:
 						return <Screen2 style={props}
+										screen={screen}
 										key={key}
 										setDifficulty={setDifficulty}
 										nextScreen={nextScreen}
@@ -138,6 +142,7 @@ export const GameSettings = () => {
 						/>;
 					case 3:
 						return <Screen3 style={props}
+										screen={screen}
 										key={key}
 										categories={categories}
 										chooseCategory={chooseCategory}

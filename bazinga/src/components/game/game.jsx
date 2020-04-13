@@ -38,7 +38,7 @@ export const Game = () => {
 
 	return (
 		<div>
-			<Link className={styles.back} to={'/'}>Back</Link>
+			{screen === 'lobby' && <Link className={styles.back} to={'/'}>Back</Link>}
 			{transitions.map(({item, props, key}) => {
 				switch (item) {
 					case 'lobby':
