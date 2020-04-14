@@ -6,10 +6,10 @@ export const setUserAction = (user) => {
 	}
 };
 
-export const setGameAction = (pinCode, gameId) => {
+export const setGameAction = (pinCode, gameId, owner = false) => {
 	return {
 		type: 'SET_GAME',
-		payload: {pinCode, gameId}
+		payload: {pinCode, gameId, owner}
 	}
 };
 

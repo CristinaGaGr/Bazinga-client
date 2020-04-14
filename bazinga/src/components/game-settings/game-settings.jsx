@@ -107,7 +107,7 @@ export const GameSettings = () => {
 	const goToLobby = () => {
 		createGame(user, numberOfQuestions, difficulty, categories).then((res) => {
 			const {pin, game_id} = res;
-			dispatch(setGameAction(pin, game_id));
+			dispatch(setGameAction(pin, game_id, true));
 			history.push('/game');
 		})
 	};

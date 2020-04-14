@@ -72,18 +72,20 @@ const CardB = ({img, question}) => {
 							return <button key={e}
 								className={
 									`${styles.option} 
-									${isCorrect && styles.correctOption}
+									${isCorrect && isSelected && styles.correctOption}
 									${correctAnswer.length && isSelected && !isCorrect && styles.wrongOption}
 									`
 								}
 								onClick={() => sendAnswer(e)}
 								disabled={(selectedOption.length && selectedOption !== e)}>
-							<div className={styles.label}>{getOptionLabel(i)}</div>
+							<div className={styles.label}>
+								{getOptionLabel(i)}
+							</div>
 							<span dangerouslySetInnerHTML={{__html: e}}/>
 							<div className={
 								`${styles.check}
-								 ${correctAnswer.length && isSelected ? styles.showCorrect : ''}
-								 ${correctAnswer.length && isSelected && isCorrect ? styles.correct : styles.wrong}`
+								 ${correctAnswer.length && (isSelected || isCorrect) ? styles.showCorrect : ''}
+								 ${correctAnswer.length && isCorrect ? styles.correct : styles.wrong}`
 							}>
 								{isCorrect &&
 								<img src={process.env.PUBLIC_URL + '/assets/images/check.png'} alt={'correct'}/>}
@@ -91,7 +93,7 @@ const CardB = ({img, question}) => {
 								<img src={process.env.PUBLIC_URL + '/assets/images/cross.png'} alt={'correct'}/>}
 							</div>
 
-							{(selectedOption.length && selectedOption !== e) ?
+							{(selectedOption.length && selectedOption !== e && !isCorrect) ?
 							<div className={styles.disabled}/> : <></>}
 						</button>}
 					)}
@@ -101,7 +103,7 @@ const CardB = ({img, question}) => {
 	)
 };
 
-export const QuestionCard = ({style, className, question}) => {
+export const QuestionCard = ({style, question}) => {
 	const [img, setImg] = useState('');
 	const [category, setCategory] = useState('');
 	const [flipped, set] = useState(false);
@@ -125,7 +127,7 @@ export const QuestionCard = ({style, className, question}) => {
 	}, [question]);
 
 	return (
-		<a.div style={{...style}} className={className}>
+		<a.div style={{...style}}>
 			<a.div className={styles.card}
 				   style={{opacity: opacity.interpolate(o => 1 - o), transform}}>
 				<CardA img={img} category={category}/>

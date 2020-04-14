@@ -14,16 +14,16 @@ button, button:active, button:focus {
   color: white;
   background: $button-background;
   border: 1px $button-background solid;
-  box-shadow: 0 4px 0 0 $button-shadow;
+  box-shadow: 0 0.2rem 0 0 $button-shadow;
   border-radius: 24px;
 
   font-size: $s18px;
   padding: $s12px $s24px;
 
-  transition: 0.2s all;
+  transition: 0.5s all;
 
   &:active {
-    transform: translateY(4px);
+    transform: translateY(0.2rem);
     box-shadow: 0 0 0 0 $button-shadow;
   }
 
@@ -37,8 +37,9 @@ button, button:active, button:focus {
   color: $color-categories;
   background: $button-category-background;
   border: 1px $button-category-border solid;
-  box-shadow: 0 4px 0 0 $button-category-shadow;
+  box-shadow: 0 0.2rem 0 0 $button-category-shadow;
   &:active {
+    transform: translateY(0.2rem);
     box-shadow: 0 0 0 0 $button-category-shadow;
   }
 }
@@ -47,9 +48,10 @@ button, button:active, button:focus {
   @extend .btn;
   background: $button-next-background;
   border: 1px $button-next-border solid;
-  box-shadow: 0 4px 0 0 $button-next-shadow;
+  box-shadow: 0 0.2rem 0 0 $button-next-shadow;
 
   &:active {
+    transform: translateY(0.2rem);
     box-shadow: 0 0 0 0 $button-shadow;
   }
 }

@@ -8,7 +8,7 @@ import { useGlobalContext } from './context/context';
 import { getUser } from './api/core.api';
 import { setUserAction } from './context/actions';
 import { Game } from './components/game/game';
-import { Ranking } from './components/ranking/ranking';
+import { Ranking } from './components/game/components/ranking/ranking';
 import { SignUp } from './components/auth/signup';
 import { SignIn } from './components/auth/signin';
 import { History } from './components/history/history';

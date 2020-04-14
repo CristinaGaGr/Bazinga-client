@@ -7,13 +7,15 @@ import { useGlobalContext } from '../../context/context';
 import { Lobby } from '../lobby/lobby';
 import { useTransition } from 'react-spring';
 import { useHorizontalTransition } from '../../constants/animations.constants';
+import { Ranking } from './components/ranking/ranking';
 
 export const Game = () => {
 	const history = useHistory();
 	const [screen, setScreen] = useState('lobby');
-	const [{pinCode, gameId, user, fromJoin}] = useGlobalContext();
+	const [{pinCode, gameId, user, fromJoin, owner}] = useGlobalContext();
 	const [users, setUsers] = useState([]);
 	const [question, setQuestion] = useState(null);
+	const [ranking, setRanking] = useState([]);
 
 	const startGame = () => {
 		socket.emit('/start', gameId, user);
@@ -31,10 +33,25 @@ export const Game = () => {
 			setScreen('question');
 		});
 
+		socket.on('/ranking', (res) => {
+			setTimeout(() => {
+				res = res.sort((a, b) => b.score - a.score).slice(0, 5).map(e => ({...e, height: 70}));
+				setScreen('ranking');
+				setRanking(res);
+
+				setTimeout(() => {
+					// const isLast =  question.questionNumber === question.totalQuestions;
+					if (owner) {
+						socket.emit('/new-question');
+					}
+				}, 3000);
+
+			}, 2000);
+		});
+
 	}, [gameId, user]);
 
 	const transitions = useHorizontalTransition(screen);
-
 
 	return (
 		<div>
@@ -51,9 +68,12 @@ export const Game = () => {
 									  fromJoin={fromJoin}/>;
 					case 'question':
 						return <QuestionCard style={props}
-											 className={styles.container}
 											 key={key}
 											 question={question}/>;
+					case 'ranking':
+						return <Ranking style={props}
+											 key={key}
+											 ranking={ranking}/>;
 					default:
 						return <></>
 				}
