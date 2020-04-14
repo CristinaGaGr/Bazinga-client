@@ -22,7 +22,7 @@ export const Lobby = ({style, className, pinCode, users, startGame, fromJoin}) =
 				<div className={styles.pinCopy}>
 					<input ref={pinCodeRef} type={'text'} value={pinCode} disabled={true}/>
 					<button onClick={copy}>
-						<img src={process.env.PUBLIC_URL + '/assets/images/copy-icon.png'}/>
+						<img src={process.env.PUBLIC_URL + '/assets/images/copy-icon.png'} alt={'copy icon'}/>
 					</button>
 					{showCopied && <div className={styles.copiedMessage}>Copied!</div>}
 				</div>

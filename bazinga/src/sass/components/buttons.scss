@@ -27,7 +27,7 @@ button, button:active, button:focus {
     box-shadow: 0 0 0 0 $button-shadow;
   }
 
-  & .disabled, &:disabled {
+  &.disabled, &:disabled {
     opacity: 0.6;
   }
 }
@@ -39,7 +39,6 @@ button, button:active, button:focus {
   border: 1px $button-category-border solid;
   box-shadow: 0 0.2rem 0 0 $button-category-shadow;
   &:active {
-    transform: translateY(0.2rem);
     box-shadow: 0 0 0 0 $button-category-shadow;
   }
 }
@@ -51,7 +50,6 @@ button, button:active, button:focus {
   box-shadow: 0 0.2rem 0 0 $button-next-shadow;
 
   &:active {
-    transform: translateY(0.2rem);
     box-shadow: 0 0 0 0 $button-shadow;
   }
 }

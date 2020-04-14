@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react';
 import styles from './game.module.scss';
 import { QuestionCard } from './components/question-card/question-card';
 import { socket } from '../../api/api';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useGlobalContext } from '../../context/context';
 import { Lobby } from '../lobby/lobby';
-import { useTransition } from 'react-spring';
 import { useHorizontalTransition } from '../../constants/animations.constants';
 import { Ranking } from './components/ranking/ranking';
 import { FinalRanking } from './components/final-ranking/final-ranking';
@@ -23,7 +22,7 @@ export const Game = () => {
 	};
 
 	const leave = () => {
-		socket.emit('/bye');
+		socket.emit('/bye', user);
 		history.push('/');
 	};
 
@@ -37,7 +36,6 @@ export const Game = () => {
 		});
 
 		socket.on('/question', (res) => {
-			console.log(res);
 			setQuestion(res);
 			totalQuestions = res.totalQuestions;
 			questionNumber = res.questionNumber;
@@ -49,7 +47,7 @@ export const Game = () => {
 			setTimeout(() => {
 				const isLast = questionNumber === totalQuestions;
 				if (isLast) {
-					res = res.sort((a, b) => b.score - a.score).map(e => ({...e, height: 70}));
+					res = res.sort((a, b) => a.score - b.score).map(e => ({...e, height: 70}));
 					setScreen('finalRanking');
 				} else {
 					res = res.sort((a, b) => b.score - a.score).slice(0, 5).map(e => ({...e, height: 70}));
@@ -71,14 +69,17 @@ export const Game = () => {
 			}, 2000);
 		});
 
-	}, [gameId, user]);
+	}, [gameId, user, owner]);
 
 	const transitions = useHorizontalTransition(screen);
 
 	return (
 		<div>
-			{screen === 'lobby' || screen === 'finalRanking' && <button className={styles.back} onClick={leave}><img
-				src={process.env.PUBLIC_URL + '/assets/images/back-arrow.png'} alt={'back-arrow'}/></button>}
+			{(screen === 'lobby' || screen === 'finalRanking') &&
+			<button className={styles.back} onClick={leave}>
+				<img src={process.env.PUBLIC_URL + '/assets/images/back-arrow.png'}
+					 alt={'back-arrow'}/>
+			</button>}
 			{transitions.map(({item, props, key}) => {
 				switch (item) {
 					case 'lobby':

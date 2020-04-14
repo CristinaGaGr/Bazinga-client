@@ -16,6 +16,7 @@ window.addEventListener('resize', () => {
 });
 
 
+
 ReactDOM.render(
     <React.StrictMode>
         <StateProvider initialState={initialState} reducer={reducer}>

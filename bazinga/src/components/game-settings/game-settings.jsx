@@ -18,11 +18,13 @@ const Screen1 = ({style, numberOfQuestions, setNumberOfQuestions, nextScreen, sc
 			<div className={styles.title}>Number of questions?</div>
 			<div className={styles.buttonsContainer}>
 				{numberOfQuestionsArray.map(e =>
-					<button key={e}
-							className={'btn'}
+					{
+						const isDisabled = numberOfQuestions !== 0 && e !== numberOfQuestions;
+						return <button key={e}
+							className={`btn ${isDisabled && 'disabled'}`}
 							onClick={() => setNumberOfQuestions(e)}>
 						{e}
-					</button>
+					</button>}
 				)}
 			</div>
 			<button className={`btn-next ${styles.next}`}
@@ -43,11 +45,13 @@ const Screen2 = ({style, setDifficulty, nextScreen, difficulty, screen}) => {
 			<div className={styles.title}>Difficulty?</div>
 			<div className={styles.buttonsContainer}>
 				{difficultyArray.map(e =>
-					<button key={e.value}
-							className={'btn'}
+					{
+						const isDisabled = difficulty.length && e.value !== difficulty;
+						return <button key={e.value}
+							className={`btn ${isDisabled && 'disabled'}`}
 							onClick={() => setDifficulty(e.value)}>
 						{e.label}
-					</button>
+					</button>}
 				)}
 			</div>
 			<button className={`btn-next ${styles.next}`}
