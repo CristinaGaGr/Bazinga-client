@@ -8,6 +8,7 @@ import { Lobby } from '../lobby/lobby';
 import { useTransition } from 'react-spring';
 import { useHorizontalTransition } from '../../constants/animations.constants';
 import { Ranking } from './components/ranking/ranking';
+import { FinalRanking } from './components/final-ranking/final-ranking';
 
 export const Game = () => {
 	const history = useHistory();
@@ -21,8 +22,14 @@ export const Game = () => {
 		socket.emit('/start', gameId, user);
 	};
 
+	const leave = () => {
+		socket.emit('/bye');
+		history.push('/');
+	};
+
 	useEffect(() => {
 		let questionNumber = 0;
+		let totalQuestions = 0;
 
 		socket.emit('/hello', gameId, user);
 		socket.on('/user', (users) => {
@@ -32,6 +39,7 @@ export const Game = () => {
 		socket.on('/question', (res) => {
 			console.log(res);
 			setQuestion(res);
+			totalQuestions = res.totalQuestions;
 			questionNumber = res.questionNumber;
 			setScreen('question');
 		});
@@ -39,14 +47,24 @@ export const Game = () => {
 		socket.on('/ranking', (res) => {
 			console.log(questionNumber);
 			setTimeout(() => {
-				res = res.sort((a, b) => b.score - a.score).slice(0, 5).map(e => ({...e, height: 70}));
-				setScreen('ranking');
+				const isLast = questionNumber === totalQuestions;
+				if (isLast) {
+					res = res.sort((a, b) => b.score - a.score).map(e => ({...e, height: 70}));
+					setScreen('finalRanking');
+				} else {
+					res = res.sort((a, b) => b.score - a.score).slice(0, 5).map(e => ({...e, height: 70}));
+					setScreen('ranking');
+				}
 				setRanking(res);
 
 				setTimeout(() => {
-					// const isLast =  question.questionNumber === question.totalQuestions;
+					console.log(questionNumber, totalQuestions);
 					if (owner) {
-						socket.emit('/new-question');
+						if (isLast) {
+							console.log('game finished');
+						} else {
+							socket.emit('/new-question');
+						}
 					}
 				}, 3000);
 
@@ -59,7 +77,8 @@ export const Game = () => {
 
 	return (
 		<div>
-			{screen === 'lobby' && <button className={styles.back}  onClick={() => history.push('/')}><img src={process.env.PUBLIC_URL + '/assets/images/back-arrow.png'} alt={'back-arrow'}/></button>}
+			{screen === 'lobby' || screen === 'finalRanking' && <button className={styles.back} onClick={leave}><img
+				src={process.env.PUBLIC_URL + '/assets/images/back-arrow.png'} alt={'back-arrow'}/></button>}
 			{transitions.map(({item, props, key}) => {
 				switch (item) {
 					case 'lobby':
@@ -76,6 +95,10 @@ export const Game = () => {
 											 question={question}/>;
 					case 'ranking':
 						return <Ranking style={props}
+										key={key}
+										ranking={ranking}/>;
+					case 'finalRanking':
+						return <FinalRanking style={props}
 											 key={key}
 											 ranking={ranking}/>;
 					default:

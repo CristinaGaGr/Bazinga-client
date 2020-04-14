@@ -1,30 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import styles from './ranking.module.scss';
-import { useTransition, animated } from 'react-spring'
-
-// const data = [
-// 	{
-// 		user: 'Rare Wind',
-// 		score: 10,
-// 		_id: 1,
-// 		height: 70
-// 	},
-// 	{
-// 		user: 'Saint Petersburg',
-// 		score: 2000,
-// 		_id: 1,
-// 		height: 70
-// 	},
-// 	{
-// 		user: 'Deep Blue',
-// 		score: 500,
-// 		_id: 1,
-// 		height: 70
-// 	}
-// ];
+import styles from './final-ranking.module.scss';
+import { animated, useTransition } from 'react-spring';
 
 
-export const Ranking = ({style, ranking}) => {
+export const FinalRanking = ({style, ranking}) => {
 	const [rows, set] = useState([]);
 
 	useEffect(() => {
@@ -45,7 +24,7 @@ export const Ranking = ({style, ranking}) => {
 
 	return (
 		<div style={{...style}} className={styles.container}>
-			<div className={styles.title}>Scoreboard</div>
+			<div className={styles.title}>Final Result!!!</div>
 			<div className={styles.score}>
 				{transitions.map(({item, props: {y, ...rest}, key}, index) => (
 					<animated.div
@@ -56,7 +35,7 @@ export const Ranking = ({style, ranking}) => {
 							transform: y.interpolate(y => `translate3d(0,${y}px,0)`), ...rest
 						}}>
 						<button className={'btn-category'}>{index + 1}. {item.user}
-						<div>{item.score}</div>
+							<div>{item.score}</div>
 						</button>
 					</animated.div>
 				))}

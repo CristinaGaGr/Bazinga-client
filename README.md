@@ -6,7 +6,7 @@ The new quizz game
 
 ## What is Bazzinga?
 
-Bazzinga is a movile quizz game that allows users to compete against friends. 
+Bazzinga is a mobile quizz game that allows users to compete against friends. 
 
 The game's questions are based on 9 knowledge categories: 
 
