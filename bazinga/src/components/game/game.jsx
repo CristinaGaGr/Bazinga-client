@@ -11,7 +11,7 @@ import { FinalRanking } from './components/final-ranking/final-ranking';
 
 export const Game = () => {
 	const history = useHistory();
-	const [screen, setScreen] = useState('finalRanking');
+	const [screen, setScreen] = useState('lobby');
 	const [{pinCode, gameId, user, fromJoin, owner}] = useGlobalContext();
 	const [users, setUsers] = useState([]);
 	const [question, setQuestion] = useState(null);
