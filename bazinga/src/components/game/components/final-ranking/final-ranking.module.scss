@@ -17,23 +17,42 @@
     margin-bottom: $s56px;
   }
 
-  .score {
+  .trailsMain {
+    position: relative;
     width: 100%;
-    height: calc(var(--vh, 1vh) * 70 );
+    height: calc((var(--vh, 1vh) * 80));
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    align-items: center;
+  }
 
-    .card {
-      position: absolute;
-      will-change: transform, height, opacity;
+  .trailsText {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    will-change: transform, opacity;
+    button {
       width: 100%;
-
-      button {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-      }
+      height: 70px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
     }
   }
 
+  .trailsText > div {
+    overflow: hidden;
+  }
+
+
 }
 
+@keyframes go-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -32,7 +32,7 @@ const Routes = () => {
 
 
 export const App = () =>  {
-    const [{user}, dispatch] = useGlobalContext();
+    const [{}, dispatch] = useGlobalContext();
 
     useEffect(() => {
         getUser().then( (res) => {

@@ -9,7 +9,7 @@ export const CategoryButton = ({value, label, imgSrcS, chooseCategory, selectedC
 	useEffect(() => {
 		setIsSelected(selectedCategories.includes(value)
 			|| selectedCategories.length === categoriesArray.length - 1);
-	});
+	}, [selectedCategories]);
 
 	return (
 		<>

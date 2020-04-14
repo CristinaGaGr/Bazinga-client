@@ -55,8 +55,9 @@ export const Ranking = ({style, ranking}) => {
 							zIndex: ranking.length - index,
 							transform: y.interpolate(y => `translate3d(0,${y}px,0)`), ...rest
 						}}>
-						<button className={'btn-category'}>{index + 1}. {item.user}
-						<div>{item.score}</div>
+						<button className={'btn-category'}>
+							{index + 1}. {item.user}
+							<div>{item.score}</div>
 						</button>
 					</animated.div>
 				))}

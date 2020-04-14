@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './username.module.scss';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useGlobalContext } from '../../context/context';
 import { joinGame } from '../../api/game.api';
 import { fromJoinAction, setGameAction, setUserAction } from '../../context/actions';

@@ -15,13 +15,15 @@ const CardA = ({img, category}) => {
 };
 
 
-const CardB = ({img, question}) => {
+const CardB = ({img, question, flipped}) => {
 	const [selectedOption, setSelectedOption] = useState('');
 	const [initialTime, setInitialTime] = useState(null);
+	const [timeEnd, setTimeEnd] = useState(false);
 
 	const [correctAnswer, setCorrectAnswer] = useState('');
 
 	const sendAnswer = (answer) => {
+		setTimeEnd(true);
 		const finalTime = new Date();
 		const resultTime = finalTime - initialTime;
 		setSelectedOption(answer);
@@ -77,7 +79,7 @@ const CardB = ({img, question}) => {
 									`
 								}
 								onClick={() => sendAnswer(e)}
-								disabled={(selectedOption.length && selectedOption !== e)}>
+								disabled={timeEnd || !flipped}>
 							<div className={styles.label}>
 								{getOptionLabel(i)}
 							</div>
@@ -134,7 +136,7 @@ export const QuestionCard = ({style, question}) => {
 			</a.div>
 			<a.div className={styles.card}
 				   style={{opacity, transform: transform.interpolate(t => `${t} rotateY(180deg)`)}}>
-				<CardB img={img} question={question}/>
+				<CardB img={img} question={question} flipped={flipped}/>
 			</a.div>
 		</a.div>
 	)
