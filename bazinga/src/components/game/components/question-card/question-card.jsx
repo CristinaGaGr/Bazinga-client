@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './question-card.module.scss';
 import { useSpring, animated as a } from 'react-spring'
 import { categoriesArray } from '../../../../constants/setting.constants';
 import { socket } from '../../../../api/api';
+
 
 
 const CardA = ({img, category}) => {
@@ -47,7 +48,7 @@ const CardB = ({img, question, flipped}) => {
 		socket.on('/correct-answer', (res) => {
 			setCorrectAnswer(res);
 		})
-	});
+	}, []);
 
 	const counterEnd = () => {
 		if (!selectedOption.length) {

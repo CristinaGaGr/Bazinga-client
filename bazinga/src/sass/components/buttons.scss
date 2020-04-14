@@ -20,7 +20,7 @@ button, button:active, button:focus {
   font-size: $s18px;
   padding: $s12px $s24px;
 
-  transition: 0.5s all;
+  transition: 0.2s all;
 
   &:active {
     transform: translateY(0.2rem);

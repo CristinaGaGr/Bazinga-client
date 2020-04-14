@@ -37,9 +37,9 @@
 
 
   .categoriesContainer {
-    margin-top: calc(var(--vh, 1vh) * 2);
+    margin-top: calc(var(--vh, 1vh) * 1.5);
     overflow: auto;
-    height: calc(var(--vh, 1vh) * 70);
+    height: calc(var(--vh, 1vh) * 65);
     & > * {
       width: 100%;
       margin-bottom: $s16px;

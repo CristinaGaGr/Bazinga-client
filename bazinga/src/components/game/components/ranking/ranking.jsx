@@ -2,26 +2,26 @@ import React, { useEffect, useState } from 'react';
 import styles from './ranking.module.scss';
 import { useTransition, animated } from 'react-spring'
 
-// const data = [
-// 	{
-// 		user: 'Rare Wind',
-// 		score: 10,
-// 		_id: 1,
-// 		height: 70
-// 	},
-// 	{
-// 		user: 'Saint Petersburg',
-// 		score: 2000,
-// 		_id: 1,
-// 		height: 70
-// 	},
-// 	{
-// 		user: 'Deep Blue',
-// 		score: 500,
-// 		_id: 1,
-// 		height: 70
-// 	}
-// ];
+const data = [
+	{
+		user: 'Rare Wind',
+		score: 10,
+		_id: 1,
+		height: 70
+	},
+	{
+		user: 'Saint Petersburg',
+		score: 2000,
+		_id: 1,
+		height: 70
+	},
+	{
+		user: 'Deep Blue',
+		score: 500,
+		_id: 1,
+		height: 70
+	}
+];
 
 
 export const Ranking = ({style, ranking}) => {
@@ -38,7 +38,7 @@ export const Ranking = ({style, ranking}) => {
 		{
 			from: {height: 0, opacity: 0},
 			leave: {height: 0, opacity: 0},
-			enter: ({y, height}) => ({y, height, opacity: 1}),
+			enter: ({y, height}) => ({y, height, opacity: 1, delay: 1000}),
 			update: ({y, height}) => ({y, height})
 		}
 	);
