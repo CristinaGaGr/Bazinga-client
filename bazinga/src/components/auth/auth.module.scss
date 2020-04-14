@@ -26,11 +26,23 @@
 
 
   input {
-    width: 80%;
+    width: 90%;
     //margin-top: 3rem;
   }
 
   button {
     margin-top: 3rem;
+  }
+}
+
+.back {
+  position: absolute;
+  top: $s16px;
+  left: $s16px;
+  z-index: 1;
+  background: none;
+
+  img {
+    width: 40px;
   }
 }

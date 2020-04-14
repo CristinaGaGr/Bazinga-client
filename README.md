@@ -21,7 +21,7 @@ The game's questions are based on 9 knowledge categories:
 - History :page_with_curl:
 
 The game has 9 cartoonish iconic characters, one to represent each category. 
-The objective of the game is to anwers questions correctly and in doing so, beat your opponents! The time limit to answer the given questions is 20 seconds.
+The objective of the game is to anwers questions correctly and in doing so, beat your opponents! The time limit to answer the given questions is 10 seconds.
 
 A player may start a new game by pressing the CREATE button on the app. That player will be the owner of the game and will provide a numeric pin code to their friends to join the game.
 The owner can set in the game: Number of questions, Categories and Difficulty.

@@ -22,6 +22,8 @@ export const Game = () => {
 	};
 
 	useEffect(() => {
+		let questionNumber = 0;
+
 		socket.emit('/hello', gameId, user);
 		socket.on('/user', (users) => {
 			setUsers(users);
@@ -30,10 +32,12 @@ export const Game = () => {
 		socket.on('/question', (res) => {
 			console.log(res);
 			setQuestion(res);
+			questionNumber = res.questionNumber;
 			setScreen('question');
 		});
 
 		socket.on('/ranking', (res) => {
+			console.log(questionNumber);
 			setTimeout(() => {
 				res = res.sort((a, b) => b.score - a.score).slice(0, 5).map(e => ({...e, height: 70}));
 				setScreen('ranking');

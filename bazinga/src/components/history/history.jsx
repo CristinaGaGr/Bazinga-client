@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './history.scss';
+import styles from './history.module.scss';
 import { HistoryCard } from './history-card/history-card';
 import { getSummary } from '../../api/core.api';
 import { Link, useHistory } from 'react-router-dom';
@@ -27,7 +27,8 @@ export const History = () => {
 
 	return (
 		<div>
-			<button className={'btn'} onClick={handleLogout} >Log Out</button>
+			<button className={styles.button} onClick={handleLogout}><img
+				src={process.env.PUBLIC_URL + '/assets/images/logout3.png'} alt={'logout'}/></button>
 			<h1>History</h1>
 			{summary.map((e) =>
 				<HistoryCard/>
