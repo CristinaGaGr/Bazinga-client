@@ -4,6 +4,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { useGlobalContext } from '../../context/context';
 import { checkGame, joinGame } from '../../api/game.api';
 import { fromJoinAction, setGameAction, setUserAction } from '../../context/actions';
+import socketIOClient from 'socket.io-client';
 
 export const Username = () => {
 	const history = useHistory();
@@ -35,7 +36,7 @@ export const Username = () => {
 				.then(() => {
 					joinGame(usernameToSend, pin).then((res) => {
 						const mockUser = {
-							_id: null,
+							_id: user._id || null,
 							username: usernameToSend
 						};
 						dispatch(setGameAction(pin, res));

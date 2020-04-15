@@ -117,9 +117,7 @@ export const GameSettings = () => {
 	};
 
 	const nextScreen = () => {
-		setTimeout(() => {
-			setScreen(screen + 1);
-		}, 200);
+		setScreen(screen + 1);
 	};
 
 	const transitions = useHorizontalTransition(screen);
