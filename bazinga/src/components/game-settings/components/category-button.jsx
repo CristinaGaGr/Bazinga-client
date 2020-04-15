@@ -16,7 +16,7 @@ export const CategoryButton = ({value, label, imgSrcM, chooseCategory, selectedC
 			<button className={`${styles.category} ${!imgSrcM && styles.all}`}
 					onClick={() => chooseCategory(value)}
 					data-selected={isSelected}>
-				{imgSrcM && <img src={imgSrcM} alt={'category'}/>}
+				{imgSrcM && <img src={imgSrcM} alt={'category'} className={styles.categoryImg}/>}
 				<span>{label}</span>
 				{isSelected && <img className={styles.check}
 									src={process.env.PUBLIC_URL + '/assets/images/check.png'}
