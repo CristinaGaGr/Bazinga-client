@@ -1,11 +1,22 @@
 @import 'src/sass/variables/colors';
 @import 'src/sass/variables/sizes';
+@import 'src/sass/variables/animations';
 
 .container {
   text-align: center;
 
-  & > * {
+  & > *:not(.logo) {
+    opacity: 0;
     margin-bottom: $s16px;
+    animation: go-in 0.5s 1.3s linear forwards;
+  }
+
+  .logo {
+    position: fixed;
+    opacity: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: logo 2s ease-out forwards;
   }
 
   .auth {

@@ -8,3 +8,7 @@ export const joinGame = (username, pin) => {
 	return axiosInstance.post('/game/join', {username, pin});
 };
 
+
+export const checkGame = (username, pin) => {
+	return axiosInstance.get('/game/check', {params: {username, pin}});
+};

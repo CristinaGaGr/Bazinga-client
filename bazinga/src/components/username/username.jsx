@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './username.module.scss';
 import { useHistory, useParams } from 'react-router-dom';
 import { useGlobalContext } from '../../context/context';
-import { joinGame } from '../../api/game.api';
+import { checkGame, joinGame } from '../../api/game.api';
 import { fromJoinAction, setGameAction, setUserAction } from '../../context/actions';
 
 export const Username = () => {
@@ -12,9 +12,11 @@ export const Username = () => {
 
 	const [username, setUsername] = useState('');
 	const [pin, setPin] = useState('');
+	const [error, setError] = useState('');
 
 	const goToGame = (e) => {
 		e.preventDefault();
+		setError('');
 		if (from === 'create') {
 			const mockUser = {
 				_id: null,
@@ -29,23 +31,27 @@ export const Username = () => {
 			} else {
 				usernameToSend = username;
 			}
-			joinGame(usernameToSend, pin).then((res) => {
-				const mockUser = {
-					_id: null,
-					username: usernameToSend
-				};
-				dispatch(setGameAction(pin, res));
-				dispatch(setUserAction(mockUser));
-				dispatch(fromJoinAction());
-				history.push('/game');
-			});
+			checkGame(usernameToSend, pin)
+				.then(() => {
+					joinGame(usernameToSend, pin).then((res) => {
+						const mockUser = {
+							_id: null,
+							username: usernameToSend
+						};
+						dispatch(setGameAction(pin, res));
+						dispatch(setUserAction(mockUser));
+						dispatch(fromJoinAction());
+						history.push('/game');
+					});
+				})
+				.catch((e) => setError(e.response.data.error));
 		}
 	};
 
 	return (
 		<div>
 			<button className={styles.back} onClick={() => history.push('/')}><img src={process.env.PUBLIC_URL + '/assets/images/back-arrow.png'} alt={'back-arrow'}/></button>
-			<form className={styles.container}>
+			<form className={styles.container} autoComplete={'off'}>
 				{(!user) &&
 				<>
 					<input type={'text'}
@@ -68,6 +74,7 @@ export const Username = () => {
 					placeholder={'Enter Pin Code'}
 				/>
 				}
+				{error.length ? <div className={styles.error}>{error}</div> : <></>}
 				<button className={'btn'} type={'submit'} onClick={goToGame}>Go</button>
 			</form>
 		</div>

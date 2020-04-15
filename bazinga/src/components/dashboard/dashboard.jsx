@@ -18,6 +18,10 @@ export const Dashboard = () => {
 
 	return (
 		<div className={`container ${styles.container}`}>
+			<img src={process.env.PUBLIC_URL + '/assets/images/logo.png'}
+				 alt={'logo'}
+				 className={styles.logo}
+			/>
 			<button className={'btn'} onClick={fromCreate}>CREATE A GAME</button>
 			<Link className={'btn'} to={'/username/join'}>JOIN</Link>
 			{(firstLoad) &&
@@ -28,7 +32,6 @@ export const Dashboard = () => {
 					<>
 						<Link to={'/signin'}>Sign In</Link>
 						<span>Or <Link className={styles.createAccount} to={'/signup'}>create an account</Link></span>
-
 					</>}
 			</div>
 			}

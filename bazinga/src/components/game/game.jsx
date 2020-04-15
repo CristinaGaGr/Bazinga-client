@@ -8,11 +8,12 @@ import { Lobby } from '../lobby/lobby';
 import { useHorizontalTransition } from '../../constants/animations.constants';
 import { Ranking } from './components/ranking/ranking';
 import { FinalRanking } from './components/final-ranking/final-ranking';
+import { setUserAction } from '../../context/actions';
 
 export const Game = () => {
 	const history = useHistory();
 	const [screen, setScreen] = useState('lobby');
-	const [{pinCode, gameId, user, fromJoin, owner}] = useGlobalContext();
+	const [{pinCode, gameId, user, fromJoin, owner}, dispatch] = useGlobalContext();
 	const [users, setUsers] = useState([]);
 	const [question, setQuestion] = useState(null);
 	const [ranking, setRanking] = useState([]);
@@ -23,6 +24,9 @@ export const Game = () => {
 
 	const leave = () => {
 		socket.emit('/bye', user);
+		if (!user._id) {
+			dispatch(setUserAction(null));
+		}
 		history.push('/');
 	};
 

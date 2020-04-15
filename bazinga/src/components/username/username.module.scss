@@ -1,6 +1,7 @@
 @import 'src/sass/components/containers';
 @import 'src/sass/variables/colors';
 @import 'src/sass/variables/sizes';
+@import 'src/sass/variables/animations';
 
 .container {
   @extend .container;
@@ -38,4 +39,10 @@
   img {
     width: 40px;
   }
+}
+
+.error {
+  color: $button-next-background;
+  opacity: 0;
+  animation: go-in 0.5s linear forwards;
 }

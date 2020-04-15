@@ -28,7 +28,7 @@ export const SignUp = () => {
 		<div className={'container'}>
 			<button className={styles.back} onClick={() => history.push('/')}><img
 				src={process.env.PUBLIC_URL + '/assets/images/back-arrow.png'} alt={'back-arrow'}/></button>
-			<form noValidate={true} className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+			<form noValidate={true} className={styles.form} onSubmit={handleSubmit(onSubmit)} autoComplete={'off'}>
 				<div className={styles.inputContainer}>
 					<input type="text" placeholder="Username" name="username" ref={register({required: true})}/>
 					{errors.username && <span

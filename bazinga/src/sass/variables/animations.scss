@@ -1,0 +1,36 @@
+@keyframes go-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes go-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+
+@keyframes logo {
+  0% {
+    opacity: 0;
+    width: 0;
+    top: 50%;
+  }
+  30% {
+    opacity: 1;
+    top: 50%;
+    width: calc((var(--vh, 1vh) * 50));
+  }
+  100% {
+    opacity: 1;
+    top: calc((var(--vh, 1vh) * 10));
+    width: calc((var(--vh, 1vh) * 50));
+  }
+}
