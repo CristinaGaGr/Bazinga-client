@@ -23,7 +23,7 @@ export const Game = () => {
 	};
 
 	const leave = () => {
-		socket.emit('/bye', user);
+		socket.emit('/bye', user, owner);
 		if (!user._id) {
 			dispatch(setUserAction(null));
 		}
