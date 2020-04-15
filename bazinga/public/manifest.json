@@ -3,27 +3,17 @@
   "name": "Bazinga",
   "icons": [
     {
-      "src": "logo.png",
-      "sizes": "249x72",
-      "type": "image/x-icon"
+      "src": "favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
     },
     {
-      "src": "logo.png",
-      "type": "image/png",
-      "sizes": "249x72"
-    },
-    {
-      "src": "logo@2x.png",
-      "type": "image/png",
-      "sizes": "498X144"
-    },
-    {
-      "src": "logo@3x.png",
-      "type": "image/png",
-      "sizes": "747x216"
+      "src": "mstile-150x150.png",
+      "sizes": "270x270",
+      "type": "image/png"
     }
   ],
-  "start_url": ".",
+  "start_url": "./index.html",
   "display": "fullscreen",
   "theme_color": "#000000",
   "orientation": "portrait"

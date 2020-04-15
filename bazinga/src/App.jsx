@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import './App.scss';
 import { Switch, Route } from 'react-router-dom';
 import { Dashboard } from './components/dashboard/dashboard';
 import { Username } from './components/username/username';
