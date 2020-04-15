@@ -36,6 +36,7 @@ export const Game = () => {
 
 		if (!user) {
 			history.push('/');
+			return;
 		}
 		socket.emit('/hello', gameId, user);
 		socket.on('/user', (users) => {
