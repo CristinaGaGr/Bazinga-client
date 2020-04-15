@@ -49,6 +49,8 @@ export const Game = () => {
 			setScreen('question');
 		});
 
+		socket.on('/die', leave());
+
 		socket.on('/ranking', (res) => {
 			setTimeout(() => {
 				const isLast = questionNumber === totalQuestions;
