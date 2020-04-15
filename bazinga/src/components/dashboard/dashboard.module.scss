@@ -11,6 +11,10 @@
     animation: go-in 0.5s 1.3s linear forwards;
   }
 
+  .intro {
+    font-size: $s20px;
+  }
+
   .logo {
     position: fixed;
     opacity: 0;

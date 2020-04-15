@@ -22,12 +22,13 @@ export const Dashboard = () => {
 				 alt={'logo'}
 				 className={styles.logo}
 			/>
+			<div className={styles.intro}>The new quiz game for challenging your friends!</div>
 			<button className={'btn'} onClick={fromCreate}>CREATE A GAME</button>
 			<Link className={'btn'} to={'/username/join'}>JOIN</Link>
 			{(firstLoad) &&
 			<div className={styles.auth}>
 				{(user) ?
-					<Link to={'/history'}>{user.username}</Link>
+					<Link to={'/history'}>Welcome {user.username}</Link>
 					:
 					<>
 						<Link to={'/signin'}>Sign In</Link>
