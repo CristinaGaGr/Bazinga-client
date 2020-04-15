@@ -49,7 +49,9 @@ export const Game = () => {
 			setScreen('question');
 		});
 
-		socket.on('/die', leave());
+		socket.on('/die', () => {
+			leave();
+		});
 
 		socket.on('/ranking', (res) => {
 			setTimeout(() => {
@@ -74,6 +76,10 @@ export const Game = () => {
 				}, 3000);
 
 			}, 2000);
+
+			return () => {
+				console.log('DESTROY');
+			}
 		});
 
 	}, [gameId, user, owner, history]);
