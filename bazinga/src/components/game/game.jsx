@@ -27,7 +27,8 @@ export const Game = () => {
 		if (!user._id) {
 			dispatch(setUserAction(null));
 		}
-		history.push('/');
+		// history.push('/');
+		window.location.reload();
 	};
 
 	useEffect(() => {
