@@ -74,7 +74,7 @@ export const Game = () => {
 			}, 2000);
 		});
 
-	}, [gameId, user, owner]);
+	}, [gameId, user, owner, history]);
 
 	const transitions = useHorizontalTransition(screen);
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styles from './history.module.scss';
 import { HistoryCard } from './history-card/history-card';
 import { useHistory } from 'react-router-dom';
@@ -9,7 +9,6 @@ import { useGlobalContext } from '../../context/context';
 
 export const History = () => {
 	const history = useHistory();
-	const [summary, setSummary] = useState([]);
 	const [{}, dispatch] = useGlobalContext();
 
 
