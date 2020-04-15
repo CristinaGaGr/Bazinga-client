@@ -48,13 +48,18 @@ const CardB = ({img, question, flipped}) => {
 	useEffect(() => {
 		socket.on('/correct-answer', (res) => {
 			setCorrectAnswer(res);
-		})
+		});
 	}, []);
 
 	const counterEnd = () => {
 		if (!selectedOption.length) {
 			sendAnswer('');
 		}
+		setTimeout(() =>{
+			if (!correctAnswer.length) {
+				socket.emit('/waited', question._id);
+			}
+		}, 2000);
 	};
 
 	return (
