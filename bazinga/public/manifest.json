@@ -4,28 +4,27 @@
   "icons": [
     {
       "src": "logo.png",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "sizes": "249x72",
       "type": "image/x-icon"
     },
     {
       "src": "logo.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "249x72"
     },
     {
       "src": "logo@2x.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "498X144"
     },
     {
       "src": "logo@3x.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "747x216"
     }
   ],
   "start_url": ".",
   "display": "fullscreen",
   "theme_color": "#000000",
-  "orientation": "portrait",
-  "background_color": "#F4FFE7"​
+  "orientation": "portrait"
 }

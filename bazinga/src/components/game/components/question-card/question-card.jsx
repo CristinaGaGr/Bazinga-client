@@ -6,11 +6,13 @@ import { socket } from '../../../../api/api';
 
 
 
-const CardA = ({img, category}) => {
+const CardA = ({img, category, question}) => {
+	console.log('card ', question.questionNumber);
 	return (
 		<div className={styles.a}>
 			<img src={img} alt={'category-icon'}/>
 			<div>{category}</div>
+			<div className={styles.counter}>{question.questionNumber} / {question.totalQuestions}</div>
 		</div>
 	)
 };
@@ -133,7 +135,7 @@ export const QuestionCard = ({style, question}) => {
 		<a.div style={{...style}}>
 			<a.div className={styles.card}
 				   style={{opacity: opacity.interpolate(o => 1 - o), transform}}>
-				<CardA img={img} category={category}/>
+				<CardA img={img} category={category} question={question}/>
 			</a.div>
 			<a.div className={styles.card}
 				   style={{opacity, transform: transform.interpolate(t => `${t} rotateY(180deg)`)}}>

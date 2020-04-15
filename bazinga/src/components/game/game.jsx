@@ -46,6 +46,7 @@ export const Game = () => {
 			setQuestion(res);
 			totalQuestions = res.totalQuestions;
 			questionNumber = res.questionNumber;
+			console.log('response: ', res.questionNumber);
 			setScreen('question');
 		});
 

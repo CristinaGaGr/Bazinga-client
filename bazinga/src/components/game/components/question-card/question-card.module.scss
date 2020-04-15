@@ -14,6 +14,7 @@
 
   background: $background;
 
+
   .a {
     display: flex;
     flex-direction: column;
@@ -32,6 +33,13 @@
       text-align: center;
       font-size: $s36px;
       margin-bottom: $s90px;
+    }
+
+    .counter {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      font-size: $s20px;
     }
   }
 
