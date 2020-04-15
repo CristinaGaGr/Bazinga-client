@@ -7,7 +7,6 @@ import { socket } from '../../../../api/api';
 
 
 const CardA = ({img, category, question}) => {
-	console.log('card ', question.questionNumber);
 	return (
 		<div className={styles.a}>
 			<img src={img} alt={'category-icon'}/>

@@ -14,7 +14,7 @@
 
   .fireworks {
     position: fixed;
-    bottom: calc((var(--vh, 1vh) * 8));
+    bottom: 0;
     height: calc((var(--vh, 1vh) * 100));
     width: calc((var(--vh, 1vh) * 100));
     animation: go-out 1s 4s linear forwards;

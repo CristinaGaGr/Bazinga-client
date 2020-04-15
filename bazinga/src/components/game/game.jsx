@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './game.module.scss';
 import { QuestionCard } from './components/question-card/question-card';
 import { socket } from '../../api/api';
@@ -46,12 +46,10 @@ export const Game = () => {
 			setQuestion(res);
 			totalQuestions = res.totalQuestions;
 			questionNumber = res.questionNumber;
-			console.log('response: ', res.questionNumber);
 			setScreen('question');
 		});
 
 		socket.on('/ranking', (res) => {
-			console.log(questionNumber);
 			setTimeout(() => {
 				const isLast = questionNumber === totalQuestions;
 				if (isLast) {
@@ -64,7 +62,6 @@ export const Game = () => {
 				setRanking(res);
 
 				setTimeout(() => {
-					console.log(questionNumber, totalQuestions);
 					if (owner) {
 						if (isLast) {
 							console.log('game finished');

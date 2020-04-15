@@ -18,7 +18,7 @@ export const SignUp = () => {
 		console.log(data);
 		signup(username, email, password, repeatPassword)
 			.then((res) => {
-				dispatch(setUserAction(res.respUser));
+				dispatch(setUserAction(res));
 				history.push('/');
 			})
 			.catch((error) => console.log(error.error));
