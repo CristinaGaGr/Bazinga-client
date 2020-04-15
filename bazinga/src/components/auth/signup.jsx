@@ -18,10 +18,10 @@ export const SignUp = () => {
 		console.log(data);
 		signup(username, email, password, repeatPassword)
 			.then((res) => {
-				dispatch(setUserAction(res));
+				dispatch(setUserAction(res.respUser));
 				history.push('/');
 			})
-			.catch((error) => console.log(error));
+			.catch((error) => console.log(error.error));
 	};
 
 	return (

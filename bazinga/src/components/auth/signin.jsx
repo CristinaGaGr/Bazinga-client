@@ -18,7 +18,7 @@ export const SignIn = () => {
 				dispatch(setUserAction(res));
 				history.push('/');
 			})
-			.catch((error) => console.log(error))
+			.catch((error) => console.log(error.error))
 	};
 
 	return (
@@ -27,12 +27,12 @@ export const SignIn = () => {
 				src={process.env.PUBLIC_URL + '/assets/images/back-arrow.png'} alt={'back-arrow'}/></button>
 			<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
 				<div className={styles.inputContainer}>
-					<input type="text" placeholder="Username" name="Username" ref={register({required: true})}/>
+					<input type="text" placeholder="Username" name="username" ref={register({required: true})}/>
 					{errors.Username && <span
 						className={styles.errorMessage}>{errors.Username.message ? errors.Username.message : 'this field is required'}</span>}
 				</div>
 				<div className={styles.inputContainer}>
-					<input type="password" placeholder="Password" name="Password"
+					<input type="password" placeholder="Password" name="password"
 						   ref={register({required: true, min: 6})}/>
 					{errors.Password && <span
 						className={styles.errorMessage}>{errors.Password.message ? errors.Password.message : 'this field is required'}</span>}
