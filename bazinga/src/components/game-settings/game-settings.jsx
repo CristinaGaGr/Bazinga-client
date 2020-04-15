@@ -76,11 +76,11 @@ const Screen3 = ({style, categories, chooseCategory, goToLobby, screen}) => {
 									selectedCategories={categories}
 									chooseCategory={chooseCategory}/>
 				)}
-				<button className={`btn-next`} onClick={goToLobby}
-						disabled={categories.length === 0}>
-					Next
-				</button>
 			</div>
+			<button className={`btn-next ${styles.next}`} onClick={goToLobby}
+					disabled={categories.length === 0}>
+				Next
+			</button>
 		</animated.div>
 	)
 };

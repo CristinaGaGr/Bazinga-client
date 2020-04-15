@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './game.module.scss';
 import { QuestionCard } from './components/question-card/question-card';
 import { socket } from '../../api/api';
@@ -30,6 +30,9 @@ export const Game = () => {
 		let questionNumber = 0;
 		let totalQuestions = 0;
 
+		if (!user) {
+			history.push('/');
+		}
 		socket.emit('/hello', gameId, user);
 		socket.on('/user', (users) => {
 			setUsers(users);
