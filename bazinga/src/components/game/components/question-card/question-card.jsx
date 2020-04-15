@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './question-card.module.scss';
 import { useSpring, animated as a } from 'react-spring'
 import { categoriesArray } from '../../../../constants/setting.constants';

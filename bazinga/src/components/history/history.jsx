@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './history.module.scss';
 import { HistoryCard } from './history-card/history-card';
-import { getSummary } from '../../api/core.api';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { logout } from '../../api/auth.api';
 import { setUserAction } from '../../context/actions';
 import { useGlobalContext } from '../../context/context';
@@ -15,7 +14,6 @@ export const History = () => {
 
 
 	useEffect(() => {
-		// getSummary().then((res) => setHistory(res));
 	},[]);
 
 	const handleLogout = () => {
@@ -30,7 +28,6 @@ export const History = () => {
 			<button className={styles.button} onClick={handleLogout}><img
 				src={process.env.PUBLIC_URL + '/assets/images/logout3.png'} alt={'logout'}/></button>
 			<h1>History</h1>
-			{summary.map((e) =>
 				<HistoryCard/>
 			)}
 		</div>

@@ -12,16 +12,16 @@ export const SignUp = () => {
 	const [{}, dispatch] = useGlobalContext();
 	const {register, handleSubmit, errors} = useForm();
 	const [password, setPassword] = useState('');
+	const [error, setError] = useState('');
 
 	const onSubmit = data => {
 		const {username, email, password, repeatPassword} = data;
-		console.log(data);
 		signup(username, email, password, repeatPassword)
 			.then((res) => {
 				dispatch(setUserAction(res));
 				history.push('/');
 			})
-			.catch((error) => console.log(error.error));
+			.catch((e) => setError(e.response.data.error));
 	};
 
 	return (
@@ -30,12 +30,17 @@ export const SignUp = () => {
 				src={process.env.PUBLIC_URL + '/assets/images/back-arrow.png'} alt={'back-arrow'}/></button>
 			<form noValidate={true} className={styles.form} onSubmit={handleSubmit(onSubmit)} autoComplete={'off'}>
 				<div className={styles.inputContainer}>
-					<input type="text" placeholder="Username" name="username" ref={register({required: true})}/>
+					<input type="text"
+						   placeholder="Username"
+						   name="username"
+						   ref={register({required: true})}/>
 					{errors.username && <span
 						className={styles.errorMessage}>{errors.username.message ? errors.username.message : 'this field is required'}</span>}
 				</div>
 				<div className={styles.inputContainer}>
-					<input type="email" placeholder="Email" name="email" ref={register({
+					<input type="email"
+						   placeholder="Email"
+						   name="email" ref={register({
 						required: true,
 						pattern: {
 							value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
@@ -62,6 +67,7 @@ export const SignUp = () => {
 					{errors.repeatPassword && <span
 						className={styles.errorMessage}>{errors.repeatPassword.message ? errors.repeatPassword.message : 'this field is required'}</span>}
 				</div>
+				{error.length ? <div className={styles.error}>{error}</div> : <></>}
 				<button className={'btn'} type={'submit'}>Sign Up</button>
 			</form>
 		</div>

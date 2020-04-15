@@ -2,27 +2,6 @@ import React, { useEffect, useState } from 'react';
 import styles from './ranking.module.scss';
 import { useTransition, animated } from 'react-spring'
 
-const data = [
-	{
-		user: 'Rare Wind',
-		score: 10,
-		_id: 1,
-		height: 70
-	},
-	{
-		user: 'Saint Petersburg',
-		score: 2000,
-		_id: 1,
-		height: 70
-	},
-	{
-		user: 'Deep Blue',
-		score: 500,
-		_id: 1,
-		height: 70
-	}
-];
-
 
 export const Ranking = ({style, ranking}) => {
 	const [rows, set] = useState([]);
