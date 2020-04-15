@@ -29,7 +29,6 @@ export const History = () => {
 				src={process.env.PUBLIC_URL + '/assets/images/logout3.png'} alt={'logout'}/></button>
 			<h1>History</h1>
 				<HistoryCard/>
-			)}
 		</div>
 	)
 };
