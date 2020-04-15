@@ -3,7 +3,7 @@ import styles from './lobby.module.scss';
 import { animated } from 'react-spring';
 
 
-export const Lobby = ({style, className, pinCode, users, startGame, fromJoin}) => {
+export const Lobby = ({style, className, pinCode, users, startGame, owner}) => {
 	const [showCopied, setShowCopied] = useState(false);
 	const pinCodeRef = useRef(null);
 	const copy = () => {
@@ -22,7 +22,6 @@ export const Lobby = ({style, className, pinCode, users, startGame, fromJoin}) =
 				<div className={styles.pinCopy}>
 					<input ref={pinCodeRef} type={'text'} value={pinCode} disabled={true}/>
 					<button onClick={copy}>
-						{/*<img><i className="far fa-clipboard"></i></img>*/}
 						<img src={process.env.PUBLIC_URL + '/assets/images/copy-icon.png'} alt={'copy icon'}/>
 					</button>
 					{showCopied && <div className={styles.copiedMessage}>Copied!</div>}
@@ -39,7 +38,7 @@ export const Lobby = ({style, className, pinCode, users, startGame, fromJoin}) =
 					)}
 				</div>
 			</div>
-			{!fromJoin && <button className={`btn ${styles.start}`} onClick={startGame}>Start Game!</button>}
+			{owner && <button className={`btn ${styles.start}`} onClick={startGame}>Start Game!</button>}
 		</animated.div>
 	)
 };

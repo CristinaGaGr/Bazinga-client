@@ -13,7 +13,7 @@ import { setUserAction } from '../../context/actions';
 export const Game = () => {
 	const history = useHistory();
 	const [screen, setScreen] = useState('lobby');
-	const [{pinCode, gameId, user, fromJoin, owner}, dispatch] = useGlobalContext();
+	const [{pinCode, gameId, user, owner}, dispatch] = useGlobalContext();
 	const [users, setUsers] = useState([]);
 	const [question, setQuestion] = useState(null);
 	const [ranking, setRanking] = useState([]);
@@ -74,16 +74,19 @@ export const Game = () => {
 						}
 					}
 				}, 3000);
-
 			}, 2000);
-
-			return () => {
-				console.log('DESTROY');
-			}
 		});
+	}, [gameId, history, owner, user]);
 
-	}, [gameId, user, owner, history]);
 
+	useEffect(() => {
+		return () => {
+			socket.off('/user');
+			socket.off('/question');
+			socket.off('/die');
+			socket.off('/ranking');
+		}
+	}, []);
 	const transitions = useHorizontalTransition(screen);
 
 	return (
@@ -102,7 +105,7 @@ export const Game = () => {
 									  pinCode={pinCode}
 									  users={users}
 									  startGame={startGame}
-									  fromJoin={fromJoin}/>;
+									  owner={owner}/>;
 					case 'question':
 						return <QuestionCard style={props}
 											 key={key}
