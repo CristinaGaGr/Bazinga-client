@@ -14,7 +14,10 @@ export const Username = () => {
 	const [pin, setPin] = useState('');
 	const [error, setError] = useState('');
 
+	const [loading, setLoading] = useState(false);
+
 	const goToGame = (e) => {
+		setLoading(true);
 		e.preventDefault();
 		setError('');
 		if (from === 'create') {
@@ -24,6 +27,7 @@ export const Username = () => {
 			};
 			dispatch(setUserAction(mockUser));
 			history.push('/set');
+			setLoading(false);
 		} else {
 			let usernameToSend = '';
 			if (user) {
@@ -33,24 +37,31 @@ export const Username = () => {
 			}
 			checkGame(usernameToSend, pin)
 				.then(() => {
-					joinGame(usernameToSend, pin).then((res) => {
-						const mockUser = {
-							_id: user._id || null,
-							username: usernameToSend
-						};
-						dispatch(setGameAction(pin, res));
-						dispatch(setUserAction(mockUser));
-						dispatch(fromJoinAction());
-						history.push('/game');
-					});
+					joinGame(usernameToSend, pin)
+						.then((res) => {
+							const mockUser = {
+								_id: user._id || null,
+								username: usernameToSend
+							};
+							dispatch(setGameAction(pin, res));
+							dispatch(setUserAction(mockUser));
+							dispatch(fromJoinAction());
+							setLoading(false);
+							history.push('/game');
+						})
+						.catch(() => setLoading(false));
 				})
-				.catch((e) => setError(e.response.data.error));
+				.catch((e) => {
+					setError(e.response.data.error);
+					setLoading(false);
+				});
 		}
 	};
 
 	return (
 		<div>
-			<button className={styles.back} onClick={() => history.push('/')}><img src={process.env.PUBLIC_URL + '/assets/images/back-arrow.png'} alt={'back-arrow'}/></button>
+			<button className={styles.back} onClick={() => history.push('/')}><img
+				src={process.env.PUBLIC_URL + '/assets/images/back-arrow.png'} alt={'back-arrow'}/></button>
 			<form className={styles.container} autoComplete={'off'}>
 				{(!user) &&
 				<>
@@ -75,7 +86,12 @@ export const Username = () => {
 				/>
 				}
 				{error.length ? <div className={styles.error}>{error}</div> : <></>}
-				<button className={'btn'} type={'submit'} onClick={goToGame}>Go</button>
+				<button className={'btn'}
+						type={'submit'}
+						disabled={loading}
+						onClick={goToGame}>
+					Go
+				</button>
 			</form>
 		</div>
 	)

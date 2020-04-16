@@ -63,7 +63,7 @@ const Screen2 = ({style, setDifficulty, nextScreen, difficulty, screen}) => {
 	)
 };
 
-const Screen3 = ({style, categories, chooseCategory, goToLobby, screen}) => {
+const Screen3 = ({style, categories, chooseCategory, goToLobby, screen, loading}) => {
 	return (
 		<animated.div style={{...style}}
 					  className={styles.container}>
@@ -77,8 +77,9 @@ const Screen3 = ({style, categories, chooseCategory, goToLobby, screen}) => {
 									chooseCategory={chooseCategory}/>
 				)}
 			</div>
-			<button className={`btn-next ${styles.next}`} onClick={goToLobby}
-					disabled={categories.length === 0}>
+			<button className={`btn-next ${styles.next}`}
+					onClick={goToLobby}
+					disabled={categories.length === 0 || loading}>
 				Next
 			</button>
 		</animated.div>
@@ -91,6 +92,8 @@ export const GameSettings = () => {
 	const [numberOfQuestions, setNumberOfQuestions] = useState(0);
 	const [difficulty, setDifficulty] = useState('');
 	const [categories, setCategories] = useState([]);
+
+	const [loading, setLoading] = useState(false);
 
 	const [{user}, dispatch] = useGlobalContext();
 
@@ -109,9 +112,11 @@ export const GameSettings = () => {
 	};
 
 	const goToLobby = () => {
+		setLoading(true);
 		createGame(user, numberOfQuestions, difficulty, categories).then((res) => {
 			const {pin, game_id} = res;
 			dispatch(setGameAction(pin, game_id, true));
+			setLoading(false);
 			history.push('/game');
 		})
 	};
@@ -148,6 +153,7 @@ export const GameSettings = () => {
 										key={key}
 										categories={categories}
 										chooseCategory={chooseCategory}
+										loading={loading}
 										goToLobby={goToLobby}/>;
 					default:
 						return <></>
