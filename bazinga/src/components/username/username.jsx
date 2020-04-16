@@ -3,7 +3,7 @@ import styles from './username.module.scss';
 import { useHistory, useParams } from 'react-router-dom';
 import { useGlobalContext } from '../../context/context';
 import { checkGame, joinGame } from '../../api/game.api';
-import { fromJoinAction, setGameAction, setUserAction } from '../../context/actions';
+import { setGameAction, setUserAction } from '../../context/actions';
 
 export const Username = () => {
 	const history = useHistory();

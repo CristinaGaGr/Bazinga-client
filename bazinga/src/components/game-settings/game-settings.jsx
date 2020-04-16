@@ -144,8 +144,8 @@ export const GameSettings = () => {
 										screen={screen}
 										key={key}
 										setDifficulty={setDifficulty}
-										nextScreen={nextScreen}
 										difficulty={difficulty}
+										nextScreen={nextScreen}
 						/>;
 					case 3:
 						return <Screen3 style={props}

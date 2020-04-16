@@ -27,8 +27,7 @@ export const Game = () => {
 		if (!user._id) {
 			dispatch(setUserAction(null));
 		}
-		// history.push('/');
-		window.location.reload();
+		history.push('/');
 	};
 
 	useEffect(() => {
@@ -78,6 +77,7 @@ export const Game = () => {
 				}, 3000);
 			}, 2000);
 		});
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [gameId, history, owner, user]);
 
 
