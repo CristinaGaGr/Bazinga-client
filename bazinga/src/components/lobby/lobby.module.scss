@@ -76,6 +76,8 @@
     flex-direction: column;
     flex: 1;
 
+    margin-bottom: $s16px;
+
     h2 {
       font-size: 35px;
       margin-bottom: $s32px;
@@ -86,9 +88,6 @@
       flex-direction: column;
       justify-content: flex-start;
       align-items: flex-start;
-
-      height: 300px;
-      overflow: auto;
 
       & > div {
         display: flex;
@@ -109,8 +108,8 @@
   }
 
   .start {
-    position: absolute;
-    bottom: 4px;
+    //position: absolute;
+    margin-bottom: 4px;
     width: 100%;
   }
 }
