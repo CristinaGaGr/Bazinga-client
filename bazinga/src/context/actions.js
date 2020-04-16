@@ -13,8 +13,3 @@ export const setGameAction = (pinCode, gameId, owner = false) => {
 	}
 };
 
-export const fromJoinAction = () => {
-	return {
-		type: 'FROM_JOIN'
-	}
-};

@@ -3,7 +3,6 @@ export const initialState = {
 	firstLoad: false,
 	gameId: null,
 	pinCode: null,
-	fromJoin: false,
 	owner: false
 };
 
@@ -21,11 +20,6 @@ export const reducer = (state, action) => {
 				gameId: action.payload.gameId,
 				pinCode: action.payload.pinCode,
 				owner: action.payload.owner
-			};
-		case 'FROM_JOIN':
-			return {
-				...state,
-				fromJoin: true
 			};
 		default:
 			return state;

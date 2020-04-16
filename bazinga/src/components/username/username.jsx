@@ -45,7 +45,6 @@ export const Username = () => {
 							};
 							dispatch(setGameAction(pin, res));
 							dispatch(setUserAction(mockUser));
-							dispatch(fromJoinAction());
 							setLoading(false);
 							history.push('/game');
 						})
