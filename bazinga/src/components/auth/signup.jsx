@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import styles from './auth.module.scss'
 import { useForm } from 'react-hook-form';
 import { signup } from '../../api/auth.api';
-import { setUserAction } from '../../context/actions';
-import { useGlobalContext } from '../../context/context';
 import { useHistory } from 'react-router-dom';
+import { setUserActionResponse } from '../../store/core/core.actions';
+import { useDispatch } from 'react-redux';
 
 
 export const SignUp = () => {
 	const history = useHistory();
-	const [{}, dispatch] = useGlobalContext();
+	const dispatch = useDispatch();
 	const {register, handleSubmit, errors} = useForm();
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState('');
@@ -18,7 +18,7 @@ export const SignUp = () => {
 		const {username, email, password, repeatPassword} = data;
 		signup(username, email, password, repeatPassword)
 			.then((res) => {
-				dispatch(setUserAction(res));
+				dispatch(setUserActionResponse(res));
 				history.push('/');
 			})
 			.catch((e) => setError(e.response.data.error));
