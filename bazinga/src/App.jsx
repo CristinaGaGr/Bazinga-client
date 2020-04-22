@@ -11,6 +11,8 @@ import { Ranking } from './components/game/components/ranking/ranking';
 import { SignUp } from './components/auth/signup';
 import { SignIn } from './components/auth/signin';
 import { History } from './components/history/history';
+import { useDispatch } from 'react-redux';
+import { setUserActionRequest } from './store/core/core.actions';
 
 
 
@@ -31,12 +33,10 @@ const Routes = () => {
 
 
 export const App = () =>  {
-    const [{}, dispatch] = useGlobalContext();
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        getUser().then( (res) => {
-            dispatch(setUserAction(res));
-        });
+        dispatch(setUserActionRequest());
     }, [dispatch]);
 
     return (

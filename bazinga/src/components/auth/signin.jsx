@@ -13,7 +13,8 @@ export const SignIn = () => {
 	const {register, handleSubmit, errors} = useForm();
 	const [error, setError] = useState('');
 
-	const onSubmit = data => {
+	const
+		onSubmit = data => {
 		const {username, password} = data;
 		signin(username, password)
 			.then((res) => {

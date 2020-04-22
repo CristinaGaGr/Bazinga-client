@@ -1,13 +1,14 @@
-import React from 'react';
-import styles from  './dashboard.module.scss';
+import React, { useState } from 'react';
+import styles from './dashboard.module.scss';
 import { Link, useHistory } from 'react-router-dom';
 import { useGlobalContext } from '../../context/context';
+import { useSelector } from 'react-redux';
 
 
 export const Dashboard = () => {
 	const history = useHistory();
-	const [{user, firstLoad}] = useGlobalContext();
-
+	// const [{user, firstLoad}] = useGlobalContext();
+	const {user, firstLoad} = useSelector((state) => state.coreReducer);
 	const fromCreate = () => {
 		if (user) {
 			history.push('/set');

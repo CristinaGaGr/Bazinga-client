@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './question-card.module.scss';
-import { useSpring, animated as a } from 'react-spring'
+import { useSpring, animated } from 'react-spring'
 import { categoriesArray } from '../../../../constants/setting.constants';
 import { socket } from '../../../../api/api';
 
@@ -55,7 +55,7 @@ const CardB = ({img, question, flipped}) => {
 		if (!selectedOption.length) {
 			sendAnswer('');
 		}
-		setTimeout(() =>{
+		setTimeout(() => {
 			if (!correctAnswer.length) {
 				socket.emit('/waited', question._id);
 			}
@@ -136,15 +136,15 @@ export const QuestionCard = ({style, question}) => {
 	}, [question]);
 
 	return (
-		<a.div style={{...style}}>
-			<a.div className={styles.card}
+		<animated.div style={{...style}}>
+			<animated.div className={styles.card}
 				   style={{opacity: opacity.interpolate(o => 1 - o), transform}}>
 				<CardA img={img} category={category} question={question}/>
-			</a.div>
-			<a.div className={styles.card}
+			</animated.div>
+			<animated.div className={styles.card}
 				   style={{opacity, transform: transform.interpolate(t => `${t} rotateY(180deg)`)}}>
 				<CardB img={img} question={question} flipped={flipped}/>
-			</a.div>
-		</a.div>
+			</animated.div>
+		</animated.div>
 	)
 };
