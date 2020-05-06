@@ -57,7 +57,7 @@ const CardB = ({img, question, flipped}) => {
 		}
 		setTimeout(() =>{
 			if (!correctAnswer.length) {
-				socket.emit('/waited', question._id);
+				socket.emit('/waited', question.id);
 			}
 		}, 2000);
 	};
